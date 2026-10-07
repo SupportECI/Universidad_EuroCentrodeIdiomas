@@ -108,7 +108,7 @@ export default function App() {
         )}
 
         {activeSection === "nosotros" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <NosotrosSection
               onOpenLeadModal={() => setIsLeadModalOpen(true)}
             />
@@ -116,7 +116,7 @@ export default function App() {
         )}
 
         {activeSection === "licenciatura" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <LicenciaturaSection
               onOpenLeadModal={() => setIsLeadModalOpen(true)}
               onSelectSubject={(subject) => setSelectedSubject(subject)}
@@ -125,7 +125,7 @@ export default function App() {
         )}
 
         {activeSection === "modelo-educativo" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <ModeloEducativoSection
               onOpenVideo={() => setIsVideoModalOpen(true)}
               onOpenLeadModal={() => setIsLeadModalOpen(true)}
@@ -135,7 +135,7 @@ export default function App() {
         )}
 
         {activeSection === "vida-estudiantil" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <VidaEstudiantilSection
               onOpenLeadModal={() => setIsLeadModalOpen(true)}
             />
@@ -143,7 +143,7 @@ export default function App() {
         )}
 
         {activeSection === "admisiones" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <AdmisionesSection
               onOpenLeadModal={() => setIsLeadModalOpen(true)}
             />
@@ -151,7 +151,7 @@ export default function App() {
         )}
 
         {activeSection === "contacto" && (
-          <div className="animate-fade-in pt-20">
+          <div className="animate-fade-in pt-14">
             <ContactoSection
               onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
             />

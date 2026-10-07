@@ -12,7 +12,7 @@ import {
   HelpCircle,
   FileCheck2,
 } from "lucide-react";
-import { REQUIREMENTS_DATA, FAQ_DATA } from "../../data/curriculumData";
+import { REQUIREMENTS_DATA, FAQ_DATA, INSTITUTION_INFO } from "../../data/curriculumData";
 
 export default function AdmisionesSection({ onOpenLeadModal }) {
   const [openFaq, setOpenFaq] = useState(0);
@@ -60,14 +60,101 @@ export default function AdmisionesSection({ onOpenLeadModal }) {
   };
 
   return (
-    <div id="admisiones" className="w-full bg-slate-50 py-16 sm:py-24 space-y-24">
+    <div id="admisiones" className="w-full bg-slate-50 space-y-24">
+      {/* 10.0 Hero de Admisiones & Convocatoria - Expansive Full-Bleed Atmosphere */}
+      <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
+        {/* Fondo fotográfico de alta visibilidad */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-admisiones.jpg"
+            alt="Aspirantes y Estudiantes Matriculados en Plantel Bicentenario"
+            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
+            style={{ animationDuration: "16s" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="space-y-6 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
+              <span>{INSTITUTION_INFO.name}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span>Convocatoria 2026-2027</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono border border-[#e6c15c]/30">
+                Inscripciones Abiertas
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
+              Inicia tu proceso de <span className="italic text-[#e6c15c]">admisión y asegura</span> tu lugar.
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
+              Acompañamiento personalizado desde tu diagnóstico de ingreso hasta tu matrícula formal ante la Secretaría de Educación Pública. Cupos reducidos por grupo para garantizar atención docente inmediata.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2 text-xs">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  CICLO ACTIVO
+                </span>
+                <span className="font-bold text-white text-base font-serif">Ciclo 2026-1</span>
+                <span className="text-[11px] text-slate-300 block">Generación Fundadora</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  EXAMEN DIAGNÓSTICO
+                </span>
+                <span className="font-bold text-[#e6c15c] text-base font-serif">100% Gratuito</span>
+                <span className="text-[11px] text-slate-300 block">Evaluación de nivel</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  PROGRAMA BECAS
+                </span>
+                <span className="font-bold text-white text-base font-serif">Hasta 40%</span>
+                <span className="text-[11px] text-slate-300 block">Mérito académico</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  ATENCIÓN
+                </span>
+                <span className="font-bold text-white text-base font-serif">Personalizada</span>
+                <span className="text-[11px] text-slate-300 block">Plantel Bicentenario</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+              <button
+                onClick={onOpenLeadModal}
+                className="btn-tactile py-3.5 px-7 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all text-center cursor-pointer"
+              >
+                Iniciar Registro de Aspirante
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("requisitos");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-tactile py-3.5 px-6 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Consultar Requisitos SEP</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 10.1 Proceso de Admisión: Tu Ingreso en 5 Pasos */}
       <section id="proceso-admision" className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold text-euro-gold uppercase tracking-widest block font-display">
+          <span className="text-xs font-bold text-[#7e5700] uppercase tracking-widest block font-mono">
             Ruta Oficial de Ingreso
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-euro-dark tracking-tight font-display">
+          <h2 className="text-3xl sm:text-4xl font-medium text-[#0b1d3a] tracking-tight font-serif">
             Tu Proceso de Admisión en 5 Pasos
           </h2>
           <p className="text-sm text-slate-600 leading-relaxed font-light">

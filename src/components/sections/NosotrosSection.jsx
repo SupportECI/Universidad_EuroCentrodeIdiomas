@@ -120,23 +120,34 @@ export default function NosotrosSection({ onOpenLeadModal }) {
   ];
 
   return (
-    <div id="nosotros" className="w-full bg-slate-50 py-16 sm:py-24 space-y-24">
-      {/* 6.1 Hero de Identidad Institucional Stitch */}
-      <section className="relative w-full overflow-hidden bg-[#0b1d3a] text-white rounded-2xl py-14 sm:py-20 px-6 sm:px-12 shadow-2xl max-w-7xl mx-auto border border-white/10">
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#c8963e]/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-20 w-80 h-80 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+    <div id="nosotros" className="w-full bg-slate-50 space-y-24">
+      {/* 6.1 Hero de Identidad Institucional - Expansive Full-Bleed Panorama */}
+      <section className="relative w-full overflow-hidden text-white min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
+        {/* Fondo con imagen de campus y claustro docente */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-nosotros.jpg"
+            alt="Claustro Académico y Vida en Campus Euro Centro"
+            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
+            style={{ animationDuration: "16s" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7 flex flex-col gap-5">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit border border-white/15">
-              <span className="w-2 h-2 rounded-full bg-[#e6c15c]" />
+              <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
                 {INSTITUTION_INFO.name} • Plantel Bicentenario
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
-              Más de 25 años formando líderes en idiomas en Chiapas
+              Más de <span className="italic text-[#e6c15c]">25 años</span> formando líderes en idiomas en Chiapas
             </h1>
 
             <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl font-light">
@@ -163,15 +174,15 @@ export default function NosotrosSection({ onOpenLeadModal }) {
             </div>
           </div>
 
-          {/* Imagen de Liderazgo Académico Stitch */}
+          {/* Tarjeta de Gobernanza y Claustro Académico */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-[#070a26]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-[#070a26] border border-white/15">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNJ8-5sc7xMl7gPWjRwGiyFN0QDhm4u7FZseB_FFLsFJIOeAsiTAj2YqBXh6_9f-G1F0USP_MRNZoTZj6CmlIcYH5UNVM-n7Y-t7wrzB5pPutI80LX0E9MnvzE5ZKMrObCy2ThRFx5Ekv5xcO7aPSHZtHeQ9Jq1dgLmGugUkDngxQB_m1q0Wi0mghNVkmORXw6jmJ_Qi_RVRldMof4l7mgPbqQGEo_8lAV4_esRqCf"
                 alt="Consejo Académico y Directivo Bicentenario"
                 className="w-full h-80 sm:h-96 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1d3a]/90 via-[#0b1d3a]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1d3a]/95 via-[#0b1d3a]/30 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#e6c15c]">Gobernanza y Visión</span>
                 <p className="text-sm font-bold text-white font-serif mt-0.5">Colegio Directivo y Académico Bicentenario</p>
@@ -180,7 +191,8 @@ export default function NosotrosSection({ onOpenLeadModal }) {
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* 6.2 Mensaje de Bienvenida de la Dirección Institucional Stitch */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">

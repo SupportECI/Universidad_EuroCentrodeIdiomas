@@ -4,8 +4,6 @@ import {
   Award,
   ShieldCheck,
   ArrowRight,
-  BookOpen,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function QuickFacts({ onNavigate }) {
@@ -49,9 +47,8 @@ export default function QuickFacts({ onNavigate }) {
           return (
             <div
               key={idx}
-              className={`bg-white rounded-2xl p-6 sm:p-7 shadow-lg hover:shadow-xl border border-slate-200/80 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 relative overflow-hidden ${
-                item.highlight ? "border-[#c8963e]/40 bg-gradient-to-b from-white to-[#fefce8]/30" : ""
-              }`}
+              className={`bg-white rounded-2xl p-6 sm:p-7 shadow-lg hover:shadow-xl border border-slate-200/80 flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300 relative overflow-hidden ${item.highlight ? "border-[#c8963e]/40 bg-gradient-to-b from-white to-[#fefce8]/30" : ""
+                }`}
             >
               <div className="flex items-center justify-between text-[#c8963e] mb-2">
                 <Icon className="w-6 h-6 text-[#7e5700]" />

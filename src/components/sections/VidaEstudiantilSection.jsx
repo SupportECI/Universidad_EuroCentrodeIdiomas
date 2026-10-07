@@ -83,7 +83,94 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
   ];
 
   return (
-    <div id="vida-estudiantil" className="w-full bg-slate-50 py-16 sm:py-24 space-y-24">
+    <div id="vida-estudiantil" className="w-full bg-slate-50 space-y-24">
+      {/* 9.0 Hero de Vida Estudiantil & Comunidad - Expansive Panorama */}
+      <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
+        {/* Fondo fotográfico con estudiantes universitarios conviviendo en campus */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-vida-estudiantil.jpg"
+            alt="Comunidad Universitaria en el Campus Plantel Bicentenario"
+            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
+            style={{ animationDuration: "16s" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="space-y-6 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
+              <span>{INSTITUTION_INFO.name}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span>Comunidad & Cultura Bicentenario</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono border border-[#e6c15c]/30">
+                Experiencia Universitaria
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
+              Una comunidad universitaria que <span className="italic text-[#e6c15c]">vive y respira</span> idiomas.
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
+              Más allá del aula: clubes de conversación con catedráticos nativos, cine-debate en versión original, semanas de inmersión cultural internacional y espacios diseñados para inspirar tu crecimiento personal y profesional.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2 text-xs">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  CLUBES DE CHARLA
+                </span>
+                <span className="font-bold text-white text-base font-serif">Semanal</span>
+                <span className="text-[11px] text-slate-300 block">Inglés, Francés, Italiano</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  CULTURA
+                </span>
+                <span className="font-bold text-[#e6c15c] text-base font-serif">Jornadas Europeas</span>
+                <span className="text-[11px] text-slate-300 block">Festivales gastronómicos</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  ACERVO
+                </span>
+                <span className="font-bold text-white text-base font-serif">Biblioteca Bilingüe</span>
+                <span className="text-[11px] text-slate-300 block">Colección especializada</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  AMBIENTE
+                </span>
+                <span className="font-bold text-white text-base font-serif">Plantel Bicentenario</span>
+                <span className="text-[11px] text-slate-300 block">Tuxtla Gutiérrez, Chiapas</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+              <button
+                onClick={onOpenLeadModal}
+                className="btn-tactile py-3.5 px-7 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all text-center cursor-pointer"
+              >
+                Agenda un Recorrido por el Plantel
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("instalaciones");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-tactile py-3.5 px-6 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Explorar Instalaciones & Laboratorios</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 9.1 Instalaciones en Plantel Bicentenario Stitch */}
       <section id="instalaciones" className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
         <div className="text-center max-w-3xl mx-auto space-y-2.5">

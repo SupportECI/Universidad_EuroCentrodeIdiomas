@@ -91,10 +91,95 @@ export default function ModeloEducativoSection({
   ];
 
   return (
-    <div id="modelo-educativo" className="w-full bg-slate-50 py-16 sm:py-24 space-y-24">
+    <div id="modelo-educativo" className="w-full bg-slate-50 space-y-24">
+      {/* 8.0 Hero de Modelo Educativo Trilingüe - Expansive Panorama */}
+      <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
+        {/* Fondo fotográfico con laboratorio lingüístico moderno */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-modelo-educativo.jpg"
+            alt="Laboratorio de Lingüística Aplicada y Análisis Fonético"
+            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
+            style={{ animationDuration: "16s" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="space-y-6 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
+              <span>{INSTITUTION_INFO.name}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span>Pedagogía Trilingüe Inmersiva</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
+              <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono border border-[#e6c15c]/30">
+                MCER & SEP
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
+              Aprender idiomas con <span className="italic text-[#e6c15c]">propósito, rigor</span> y tecnología.
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
+              Nuestro modelo sustituye la memorización pasiva por la práctica profesional intensiva: laboratorios acústicos, cabinas de interpretación simultánea, traducción asistida por computadora (CAT) y certificaciones internacionales integradas a la retícula curricular.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2 text-xs">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  METODOLOGÍA
+                </span>
+                <span className="font-bold text-white text-base font-serif">Inmersión Total</span>
+                <span className="text-[11px] text-slate-300 block">Enfoque comunicativo</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  SIMULTANEIDAD
+                </span>
+                <span className="font-bold text-[#e6c15c] text-base font-serif">3 Idiomas</span>
+                <span className="text-[11px] text-slate-300 block">Inglés, Francés, Italiano</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  TECNOLOGÍA
+                </span>
+                <span className="font-bold text-white text-base font-serif">Herramientas CAT</span>
+                <span className="text-[11px] text-slate-300 block">Traducción asistida</span>
+              </div>
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
+                  SALIDA PROFESIONAL
+                </span>
+                <span className="font-bold text-white text-base font-serif">Certificación C1/C2</span>
+                <span className="text-[11px] text-slate-300 block">Cambridge, DELF, PLIDA</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+              <button
+                onClick={onOpenLeadModal}
+                className="btn-tactile py-3.5 px-7 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all text-center cursor-pointer"
+              >
+                Conoce el Plan de Estudios
+              </button>
+              <button
+                onClick={onOpenVideo}
+                className="btn-tactile py-3.5 px-6 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Play className="w-4 h-4 text-[#e6c15c] fill-[#e6c15c]" />
+                <span>Ver Video Recorrido de Campus</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 8.1 Video + Introducción (Stitch Editorial Double-Bezel) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="bg-white rounded-2xl p-8 sm:p-14 shadow-lg border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="bg-white rounded-3xl p-8 sm:p-14 shadow-lg border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Columna Izquierda: Video Frame Stitch */}
           <div className="lg:col-span-6 relative">
             <div

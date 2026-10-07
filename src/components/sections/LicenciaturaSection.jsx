@@ -3,7 +3,6 @@ import {
   Download,
   CheckCircle2,
   ShieldCheck,
-  Sparkles,
   Filter,
   Globe2,
   Building,
@@ -44,58 +43,68 @@ export default function LicenciaturaSection({
     ) || [];
 
   return (
-    <div id="licenciatura" className="w-full bg-slate-50 py-12 sm:py-16 space-y-16 lg:space-y-20">
-      {/* 7.1 Encabezado Principal Oficial (Stitch Editorial) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="bg-[#0b1d3a] text-white rounded-2xl p-8 sm:p-14 lg:p-16 shadow-2xl relative overflow-hidden border border-white/10">
-          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/10 blur-3xl pointer-events-none" />
-          <div className="absolute -left-24 -bottom-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+    <div id="licenciatura" className="w-full bg-slate-50 space-y-16 lg:space-y-20">
+      {/* 7.1 Encabezado Principal Oficial - Expansive Panorama */}
+      <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
+        {/* Fondo fotográfico con estudiantes en cabinas de interpretación */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-licenciatura.jpg"
+            alt="Estudiantes en Cabinas de Interpretación Simultánea y Traducción"
+            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
+            style={{ animationDuration: "16s" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+        </div>
 
-          <div className="relative z-10 space-y-6 max-w-4xl">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="space-y-6 max-w-4xl">
             {/* RVOE Eyebrow Stitch */}
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
               <span>Plantel Bicentenario</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
-              <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono">
+              <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono border border-[#e6c15c]/30">
                 RVOE SEP {INSTITUTION_INFO.rvoeNumber}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
-              Licenciatura en Idiomas
+              Licenciatura en <span className="italic text-[#e6c15c]">Idiomas</span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
               Inglés, francés e italiano para traducir, interpretar, enseñar y
-              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada para el liderazgo global.
+              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con laboratorios acústicos y validez oficial federal SEP.
             </p>
 
             {/* Datos clave / Badges Stitch */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2 text-xs">
-              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
                   DURACIÓN
                 </span>
                 <span className="font-bold text-white text-base font-serif">9 Cuatrimestres</span>
                 <span className="text-[11px] text-slate-300 block">3 años continuos</span>
               </div>
-              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
                   VALIDEZ OFICIAL
                 </span>
                 <span className="font-bold text-[#e6c15c] text-base font-serif">306.00 Créditos</span>
                 <span className="text-[11px] text-slate-300 block">Acuerdo Federal SEP</span>
               </div>
-              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
                   MODALIDAD
                 </span>
                 <span className="font-bold text-white text-base font-serif">Escolarizada</span>
                 <span className="text-[11px] text-slate-300 block">Presencial / Bicentenario</span>
               </div>
-              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md">
+              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
                   MAPA CURRICULAR
                 </span>

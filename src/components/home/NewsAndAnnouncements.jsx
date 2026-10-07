@@ -1,4 +1,4 @@
-import { Bell, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Bell, Calendar, ArrowRight } from "lucide-react";
 import { NEWS_DATA } from "../../data/curriculumData";
 
 export default function NewsAndAnnouncements({ onNavigate, onOpenLeadModal }) {
@@ -28,47 +28,63 @@ export default function NewsAndAnnouncements({ onNavigate, onOpenLeadModal }) {
           </button>
         </div>
 
-        {/* 3 Entradas Recientes Bento Style */}
+        {/* 3 Entradas Recientes Bento Style con Miniaturas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {NEWS_DATA.map((item) => (
-            <div
-              key={item.id}
-              className="bg-slate-50/80 hover:bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/80 hover:border-euro-royal/40 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-euro-blue to-euro-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+          {NEWS_DATA.map((item, idx) => {
+            const newsImages = [
+              "/images/hero-admisiones.jpg",
+              "/images/hero-licenciatura.jpg",
+              "/images/hero-vida-estudiantil.jpg",
+            ];
+            const itemImage = newsImages[idx % newsImages.length];
 
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[10.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-euro-blue/10 text-euro-blue font-mono border border-euro-blue/20">
-                    {item.tag}
-                  </span>
-                  <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400 font-mono">
-                    <Calendar className="w-3.5 h-3.5 text-euro-gold-dark" />
-                    <span>{item.date}</span>
+            return (
+              <div
+                key={item.id}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-[#c8963e]/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+              >
+                <div>
+                  <div className="h-44 w-full overflow-hidden relative bg-slate-100">
+                    <img
+                      src={itemImage}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0b1d3a]/80 via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 text-[10.5px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0b1d3a] font-mono border border-white/40 shadow-xs">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  <div className="p-6 sm:p-7">
+                    <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400 font-mono mb-2.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#c8963e]" />
+                      <span>{item.date}</span>
+                    </div>
+                    <h3 className="font-semibold text-base sm:text-lg text-[#0b1d3a] group-hover:text-[#c8963e] mb-2.5 leading-snug transition-colors font-serif">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-light">
+                      {item.excerpt}
+                    </p>
                   </div>
                 </div>
-                <h3 className="font-extrabold text-base sm:text-lg text-euro-dark group-hover:text-euro-blue mb-2.5 leading-snug transition-colors font-display">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed font-light">
-                  {item.excerpt}
-                </p>
-              </div>
 
-              <div className="pt-6 mt-5 border-t border-slate-200/70 flex items-center justify-between text-xs">
-                <span className="font-semibold text-euro-gold-dark font-mono text-[11px]">
-                  {item.category}
-                </span>
-                <button
-                  onClick={onOpenLeadModal}
-                  className="btn-tactile font-bold text-euro-dark hover:text-euro-blue inline-flex items-center gap-1.5 transition-colors cursor-pointer text-xs"
-                >
-                  <span>Más detalles</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-euro-gold group-hover:translate-x-1 transition-transform" />
-                </button>
+                <div className="px-6 pb-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between text-xs">
+                  <span className="font-semibold text-[#7e5700] font-mono text-[11px]">
+                    {item.category}
+                  </span>
+                  <button
+                    onClick={onOpenLeadModal}
+                    className="btn-tactile font-bold text-[#0b1d3a] hover:text-[#c8963e] inline-flex items-center gap-1.5 transition-colors cursor-pointer text-xs"
+                  >
+                    <span>Más detalles</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#c8963e] group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
