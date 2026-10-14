@@ -1,19 +1,20 @@
 import { useState } from "react";
 import {
-  Download,
   CheckCircle2,
   ShieldCheck,
   Filter,
   Globe2,
   Building,
-  Award,
   BookOpen,
+  ChevronRight,
 } from "lucide-react";
 import {
   CURRICULUM_DATA,
   STUDY_AREAS,
   INSTITUTION_INFO,
+  CERTIFICATIONS_DATA,
 } from "../../data/curriculumData";
+import { CertificatesModal } from "../common/Modals";
 
 export default function LicenciaturaSection({
   onOpenLeadModal,
@@ -21,17 +22,7 @@ export default function LicenciaturaSection({
 }) {
   const [selectedCuatri, setSelectedCuatri] = useState(1);
   const [selectedArea, setSelectedArea] = useState("all");
-  const [activeTab, setActiveTab] = useState("descripcion");
-
-  const subNavLinks = [
-    { id: "descripcion", label: "Descripción" },
-    { id: "perfil-ingreso", label: "Perfil de Ingreso" },
-    { id: "perfil-egreso", label: "Perfil de Egreso" },
-    { id: "plan-estudios", label: "Plan de Estudios (58 Materias)" },
-    { id: "campo-laboral", label: "Campo Laboral" },
-    { id: "certificaciones", label: "Certificaciones y Validez" },
-    { id: "vinculacion", label: "Vinculación y Convenios" },
-  ];
+  const [selectedCertCategory, setSelectedCertCategory] = useState(null);
 
   const currentCuatriData = CURRICULUM_DATA.find(
     (c) => c.cuatrimestre === selectedCuatri
@@ -43,14 +34,13 @@ export default function LicenciaturaSection({
     ) || [];
 
   return (
-    <div id="licenciatura" className="w-full bg-slate-50 space-y-16 lg:space-y-20">
+    <div id="licenciatura" className="w-full bg-slate-50 space-y-16 lg:space-y-20 pb-16 lg:pb-24">
       {/* 7.1 Encabezado Principal Oficial - Expansive Panorama */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
         {/* Fondo fotográfico con estudiantes en cabinas de interpretación */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/hero-licenciatura.jpg"
-            alt="Estudiantes en Cabinas de Interpretación Simultánea y Traducción"
             className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
             style={{ animationDuration: "16s" }}
           />
@@ -78,7 +68,7 @@ export default function LicenciaturaSection({
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
               Inglés, francés e italiano para traducir, interpretar, enseñar y
-              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con laboratorios acústicos y validez oficial federal SEP.
+              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con laboratorios y validez oficial federal SEP.
             </p>
 
             {/* Datos clave / Badges Stitch */}
@@ -89,13 +79,6 @@ export default function LicenciaturaSection({
                 </span>
                 <span className="font-bold text-white text-base font-serif">9 Cuatrimestres</span>
                 <span className="text-[11px] text-slate-300 block">3 años continuos</span>
-              </div>
-              <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
-                <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
-                  VALIDEZ OFICIAL
-                </span>
-                <span className="font-bold text-[#e6c15c] text-base font-serif">306.00 Créditos</span>
-                <span className="text-[11px] text-slate-300 block">Acuerdo Federal SEP</span>
               </div>
               <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
@@ -121,44 +104,10 @@ export default function LicenciaturaSection({
               >
                 Solicita información
               </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("plan-estudios");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="btn-tactile py-3.5 px-6 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Download className="w-4 h-4 text-[#e6c15c]" />
-                <span>Explorar Retícula Oficial (58 Materias)</span>
-              </button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Submenú Interno con Anclas - Segmented Bar Stitch */}
-      <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-slate-200/80 shadow-xs py-2 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
-          {subNavLinks.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveTab(item.id);
-                const el = document.getElementById(item.id);
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${activeTab === item.id
-                ? "bg-[#0b1d3a] text-white shadow-xs"
-                : "text-slate-600 hover:bg-slate-100 hover:text-[#0b1d3a]"
-                }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
 
       {/* 7.2 Descripción Oficial */}
       <section id="descripcion" className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -172,7 +121,7 @@ export default function LicenciaturaSection({
           <p className="text-sm sm:text-base text-slate-700 leading-relaxed max-w-4xl font-light">
             La Licenciatura en Idiomas forma profesionales con dominio de inglés y
             francés en nueve niveles, y de italiano en cinco, con bases sólidas en
-            lingüística, traducción, interpretación y didáctica. Desde los primeros
+            lingüística, traducción, pedagogía, interpretación y didáctica. Desde los primeros
             cuatrimestres aplicas lo que aprendes, y cierras la carrera con una
             certificación internacional y un seminario de investigación aplicada. Un
             programa respaldado por más de 25 años de experiencia de Euro Centro en la
@@ -208,7 +157,7 @@ export default function LicenciaturaSection({
               <p className="text-slate-600 leading-relaxed font-light">
                 No es indispensable dominar un segundo idioma: el examen
                 diagnóstico permite conocer tu nivel de partida y diseñar tu ruta de
-                acompañamiento tutorial personalizada sin costo.
+                acompañamiento tutorial.
               </p>
             </div>
           </div>
@@ -229,7 +178,6 @@ export default function LicenciaturaSection({
             {[
               "Comunicarte con fluidez en inglés y francés, y con soltura en italiano, en contextos académicos, profesionales y cotidianos.",
               "Traducir textos generales, especializados y literarios con precisión y ética profesional.",
-              "Interpretar de forma consecutiva y simultánea en cabinas y foros profesionales.",
               "Diseñar, impartir y evaluar clases de idiomas con apoyo de tecnología pedagógica LMS.",
               "Analizar las lenguas desde la lingüística y la fonética para resolver problemas de comunicación.",
               "Desarrollar proyectos de investigación aplicada y emprender agencias o servicios relacionados con los idiomas.",
@@ -249,14 +197,11 @@ export default function LicenciaturaSection({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-100 pb-6">
             <div>
               <span className="text-xs font-bold text-euro-gold-dark uppercase tracking-widest block mb-1 font-mono">
-                Estructura Curricular Oficial SEP (Anexo 2)
+                Estructura Curricular Oficial SEP
               </span>
               <h2 className="text-3xl font-black text-euro-dark font-display">
-                Plan de Estudios Completo (9 Cuatrimestres • 58 Asignaturas)
+                Plan de Estudios Completo
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1 font-light">
-                Total del plan: 3,150 Horas Aula (HA) • 1,746 Horas Independientes (HI) • 306.00 Créditos.
-              </p>
             </div>
 
             {/* Filtro por Áreas */}
@@ -310,15 +255,6 @@ export default function LicenciaturaSection({
                   </h3>
                   <span className="text-xs font-bold text-euro-royal font-mono">
                     {currentCuatriData.period} • {currentCuatriData.subjects.length} Asignaturas
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 font-mono flex-wrap">
-                  <span>Horas Aula: {currentCuatriData.ha} hrs</span>
-                  <span>•</span>
-                  <span>Independientes: {currentCuatriData.hi} hrs</span>
-                  <span>•</span>
-                  <span className="text-euro-dark bg-euro-gold/30 px-3 py-1 rounded-lg font-bold border border-euro-gold/40">
-                    {currentCuatriData.creditos.toFixed(1)} Créditos
                   </span>
                 </div>
               </div>
@@ -384,7 +320,7 @@ export default function LicenciaturaSection({
             {[
               {
                 title: "Traductor e Intérprete",
-                desc: "Traducción de documentos, contenidos y textos especializados; interpretación en cabinas, congresos y foros.",
+                desc: "Traducción de documentos, contenidos y textos especializados; interpretación en congresos y foros.",
               },
               {
                 title: "Perito Traductor Oficial",
@@ -444,23 +380,64 @@ export default function LicenciaturaSection({
             cuatrimestre, asegurando que cada egresado concluya sus estudios con un nivel formalmente respaldado ante instancias mundiales.
           </p>
 
-          {/* Badges de Certificaciones Internacionales de Referencia */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <Award className="w-5 h-5 text-euro-blue mx-auto" />
-              <h5 className="font-bold text-xs text-euro-dark">Inglés</h5>
-              <p className="text-[11px] text-slate-500">Alineación TOEFL / Cambridge / IELTS C1-C2</p>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <Award className="w-5 h-5 text-euro-royal mx-auto" />
-              <h5 className="font-bold text-euro-dark text-xs">Francés</h5>
-              <p className="text-[11px] text-slate-500">Preparación formal DELF / DALF B2</p>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <Award className="w-5 h-5 text-euro-gold-dark mx-auto" />
-              <h5 className="font-bold text-euro-dark text-xs">Italiano</h5>
-              <p className="text-[11px] text-slate-500">Preparación PLIDA / CILS B2</p>
-            </div>
+          {/* Tarjetas Interactivas de Certificaciones Internacionales y SEP */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-3">
+            {CERTIFICATIONS_DATA.map((cat) => (
+              <div
+                key={cat.id}
+                className="group p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-euro-gold/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between gap-4"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-euro-navy/5 border border-euro-navy/10 flex items-center justify-center font-mono font-bold text-xs text-euro-navy shadow-xs">
+                        {cat.code}
+                      </span>
+                      <span className="text-[11px] font-bold font-mono text-slate-500 uppercase">
+                        {cat.targetLevel === "RVOE" ? "Acuerdo SEP" : `Nivel ${cat.targetLevel}`}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-euro-gold/15 text-euro-dark border border-euro-gold/30">
+                      {cat.badge}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h5 className="font-bold text-sm text-euro-dark group-hover:text-euro-blue transition-colors">
+                      {cat.name}
+                    </h5>
+                    <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                      {cat.tagline}
+                    </p>
+                  </div>
+
+                  {/* Muestra de certificaciones */}
+                  <div className="space-y-1 pt-1 border-t border-slate-200/60">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold block">
+                      Incluye acreditaciones:
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      {cat.certificates.map((cert) => (
+                        <span
+                          key={cert.id}
+                          className="text-[10.5px] px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-medium font-mono"
+                        >
+                          {cert.levelBadge}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setSelectedCertCategory(cat.id)}
+                  className="w-full mt-2 py-2.5 px-3 rounded-xl bg-euro-dark hover:bg-euro-navy text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm group-hover:shadow-md cursor-pointer border border-euro-gold/20"
+                >
+                  <span>Ver certificados</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-euro-gold transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -503,6 +480,14 @@ export default function LicenciaturaSection({
           </div>
         </div>
       </section>
+
+      {/* Modal de Certificaciones Oficiales e Internacionales */}
+      <CertificatesModal
+        isOpen={Boolean(selectedCertCategory)}
+        categoryId={selectedCertCategory}
+        onClose={() => setSelectedCertCategory(null)}
+        onOpenLeadModal={onOpenLeadModal}
+      />
     </div>
   );
 }

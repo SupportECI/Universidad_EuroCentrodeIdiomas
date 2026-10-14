@@ -40,7 +40,7 @@ export default function ContactoSection({ onOpenPrivacy }) {
     }, 700);
   };
   return (
-    <div id="contacto" className="w-full bg-slate-50 space-y-24">
+    <div id="contacto" className="w-full bg-slate-50 space-y-24 pb-16 lg:pb-24">
       {/* 11.0 Hero de Contacto & Plantel Bicentenario - Expansive Panorama */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
         {/* Fondo fotográfico con fachada y pórtico de campus */}

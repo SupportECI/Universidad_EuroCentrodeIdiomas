@@ -352,7 +352,7 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
                 <span className="text-euro-gold font-display font-black text-2xl block">
-                  Hasta 40%
+                  ¿Hasta 40%?
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
                   Beca al Mérito Académico

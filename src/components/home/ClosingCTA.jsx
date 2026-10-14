@@ -2,13 +2,11 @@ import { Sparkles, ClipboardCheck, ArrowRight } from "lucide-react";
 
 export default function ClosingCTA({ onOpenLeadModal, onNavigate }) {
   return (
-    <section className="w-full py-16 lg:py-20 px-4 sm:px-8 bg-slate-50">
+    <section className="w-full pt-16 pb-24 lg:pt-20 lg:pb-32 px-4 sm:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-gradient-to-br from-euro-dark via-euro-navy to-euro-surface text-white p-8 sm:p-14 lg:p-16 shadow-2xl relative overflow-hidden border border-white/15">
-        {/* Fondo con destellos de marca */}
         <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-euro-royal/25 blur-3xl pointer-events-none" />
         <div className="absolute -left-24 -bottom-24 w-96 h-96 rounded-full bg-euro-gold/15 blur-3xl pointer-events-none" />
 
-        {/* Líneas decorativas tenues */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.06]">
           <svg className="w-full h-full" viewBox="0 0 800 300" fill="none">
             <circle cx="700" cy="150" r="200" stroke="white" strokeWidth="1" />
@@ -30,7 +28,7 @@ export default function ClosingCTA({ onOpenLeadModal, onNavigate }) {
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
               Solicita informes, agenda tu examen diagnóstico sin costo y conoce los
-              apoyos y becas académicas vigentes para el ciclo 2026‑1.
+              apoyos y becas académicas vigentes para el ciclo 2027‑1.
             </p>
           </div>
 

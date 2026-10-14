@@ -1,7 +1,7 @@
+import { useState } from "react";
 import {
   Target,
   Compass,
-  Users,
   GraduationCap,
   Sparkles,
   Quote,
@@ -13,13 +13,14 @@ import {
   Lightbulb,
   Rocket,
   ShieldCheck,
-  Building2,
   ChevronRight,
   BookOpen,
 } from "lucide-react";
-import { INSTITUTION_INFO } from "../../data/curriculumData";
+import { INSTITUTION_INFO, FACULTY_COLLEGES } from "../../data/curriculumData";
+import { FacultyModal } from "../common/Modals";
 
 export default function NosotrosSection({ onOpenLeadModal }) {
+  const [selectedAcademyId, setSelectedAcademyId] = useState(null);
   const timeline = [
     {
       period: "Más de 25 años de trayectoria",
@@ -30,7 +31,7 @@ export default function NosotrosSection({ onOpenLeadModal }) {
       stats: "25+ Años",
     },
     {
-      period: "Año 2026",
+      period: "Año 2027",
       badge: "Hito Institucional",
       title: "Nace Euro Centro de Estudios Superiores",
       desc: "Evolución institucional al nivel superior con la obtención formal del Reconocimiento de Validez Oficial de Estudios (RVOE SEP Federal Acuerdo No. 20263560) para impartir la Licenciatura en Idiomas en modalidad escolarizada.",
@@ -38,7 +39,7 @@ export default function NosotrosSection({ onOpenLeadModal }) {
       stats: "RVOE SEP",
     },
     {
-      period: "Ciclo 2026-1",
+      period: "Ciclo 2027-1",
       badge: "Generación Fundadora",
       title: "Primera Generación de Licenciatura",
       desc: "Apertura de la carrera en el Plantel Bicentenario de Tuxtla Gutiérrez, formando profesionistas trilingües de élite con competencias avanzadas en traducción, interpretación simultánea y didáctica lingüística.",
@@ -78,7 +79,7 @@ export default function NosotrosSection({ onOpenLeadModal }) {
     },
     {
       title: "Innovación Metodológica",
-      desc: "Integración de laboratorios acústicos, herramientas de traducción CAT y pedagogías activas.",
+      desc: "Integración de laboratorios, herramientas de traducción y pedagogías activas.",
       icon: Lightbulb,
       accent: "from-amber-500/20 to-amber-500/5",
       iconColor: "text-amber-500",
@@ -92,35 +93,8 @@ export default function NosotrosSection({ onOpenLeadModal }) {
     },
   ];
 
-  const facultyColleges = [
-    {
-      area: "Colegio de Inglés",
-      desc: "Catedráticos nativos y lingüistas con certificaciones Cambridge C2 Proficiency y metodología comunicativa avanzada.",
-      credential: "C1 / C2 Cambridge",
-      subjects: "Inglés I a IX • Fonética Anglosajona",
-    },
-    {
-      area: "Colegio de Francés",
-      desc: "Especialistas acreditados bajo estándares del CIEP / France Éducation International con experiencia en literatura y traducción.",
-      credential: "DELF B2 / DALF C1",
-      subjects: "Francés I a IX • Cultura Francófona",
-    },
-    {
-      area: "Colegio de Italiano",
-      desc: "Profesores certificados en lengua y civilización italiana, enfocados en inmersión comunicativa y traducción jurídica.",
-      credential: "PLIDA / CILS B2",
-      subjects: "Italiano I a VI • Traducción Directa",
-    },
-    {
-      area: "Lingüística & Didáctica",
-      desc: "Investigadores en adquisición de lenguas, fonología experimental y diseño de programas curriculares bilingües.",
-      credential: "Posgrados en Lingüística",
-      subjects: "Sintaxis • Semántica • Prácticas Docentes",
-    },
-  ];
-
   return (
-    <div id="nosotros" className="w-full bg-slate-50 space-y-24">
+    <div id="nosotros" className="w-full bg-slate-50 space-y-24 pb-16 lg:pb-24">
       {/* 6.1 Hero de Identidad Institucional - Expansive Full-Bleed Panorama */}
       <section className="relative w-full overflow-hidden text-white min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
         {/* Fondo con imagen de campus y claustro docente */}
@@ -135,64 +109,47 @@ export default function NosotrosSection({ onOpenLeadModal }) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
         </div>
-        
+
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-7 flex flex-col gap-5">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit border border-white/15">
-              <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
-                {INSTITUTION_INFO.name} • Plantel Bicentenario
-              </span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
-              Más de <span className="italic text-[#e6c15c]">25 años</span> formando líderes en idiomas en Chiapas
-            </h1>
-
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl font-light">
-              Consolidamos un legado pedagógico riguroso, transformando la enseñanza lingüística en una plataforma de trascendencia internacional, diplomática y ejecutiva para el sureste de México.
-            </p>
-
-            {/* Indicadores Clave en Strip Stitch */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">25+</span>
-                <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
-                <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">Años de Trayectoria</span>
+            <div className="lg:col-span-7 flex flex-col gap-5">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit border border-white/15">
+                <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
+                  {INSTITUTION_INFO.name} • Plantel Bicentenario
+                </span>
               </div>
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">100%</span>
-                <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
-                <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">RVOE SEP Federal</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">3</span>
-                <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
-                <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">Idiomas Globales</span>
-              </div>
-            </div>
-          </div>
 
-          {/* Tarjeta de Gobernanza y Claustro Académico */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-[#070a26] border border-white/15">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNJ8-5sc7xMl7gPWjRwGiyFN0QDhm4u7FZseB_FFLsFJIOeAsiTAj2YqBXh6_9f-G1F0USP_MRNZoTZj6CmlIcYH5UNVM-n7Y-t7wrzB5pPutI80LX0E9MnvzE5ZKMrObCy2ThRFx5Ekv5xcO7aPSHZtHeQ9Jq1dgLmGugUkDngxQB_m1q0Wi0mghNVkmORXw6jmJ_Qi_RVRldMof4l7mgPbqQGEo_8lAV4_esRqCf"
-                alt="Consejo Académico y Directivo Bicentenario"
-                className="w-full h-80 sm:h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1d3a]/95 via-[#0b1d3a]/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#e6c15c]">Gobernanza y Visión</span>
-                <p className="text-sm font-bold text-white font-serif mt-0.5">Colegio Directivo y Académico Bicentenario</p>
-                <p className="text-xs text-slate-300">Sesión de Planeación Curricular y Acreditación SEP</p>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white font-serif leading-tight">
+                Más de <span className="italic text-[#e6c15c]">25 años</span> formando líderes en idiomas en Chiapas
+              </h1>
+
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl font-light">
+                Consolidamos un legado pedagógico riguroso, transformando la enseñanza lingüística en una plataforma de trascendencia internacional, diplomática y ejecutiva para el sureste de México.
+              </p>
+
+              {/* Indicadores Clave en Strip Stitch */}
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
+                <div className="flex flex-col">
+                  <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">25+</span>
+                  <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
+                  <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">Años de Trayectoria</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">100%</span>
+                  <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
+                  <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">RVOE SEP Federal</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-3xl sm:text-4xl font-bold text-[#e6c15c] font-serif leading-none">3</span>
+                  <div className="w-6 h-0.5 bg-[#e6c15c] my-2" />
+                  <span className="text-[10.5px] uppercase tracking-wider text-slate-300 font-medium">Idiomas Globales</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* 6.2 Mensaje de Bienvenida de la Dirección Institucional Stitch */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -216,17 +173,11 @@ export default function NosotrosSection({ onOpenLeadModal }) {
                 Hoy damos el paso definitivo en nuestra evolución institucional. Hemos consolidado la <strong className="text-[#0b1d3a] font-semibold">Licenciatura en Idiomas</strong> como un programa de educación superior con validez oficial federal ante la Secretaría de Educación Pública, estructurado para formar profesionales de alto perfil en inglés, francés e italiano.
               </p>
               <p>
-                No formamos aprendices de idiomas: formamos licenciados capaces de traducir con precisión terminológica, interpretar en cabina, liderar procesos educativos modernos y competir en mercados globales. Te damos la más cordial bienvenida a nuestra casa de estudios.
+                No formamos aprendices de idiomas: formamos licenciados capaces de traducir con precisión terminológica, liderar procesos educativos modernos y competir en mercados globales. Te damos la más cordial bienvenida a nuestra casa de estudios.
               </p>
             </div>
 
             <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-[#7e5700]" />
-                <span className="font-semibold text-slate-800">
-                  Dirección General Colegiada • {INSTITUTION_INFO.razonSocial}
-                </span>
-              </div>
               <span className="text-[#7e5700] font-bold tracking-wide">
                 Tuxtla Gutiérrez, Chiapas
               </span>
@@ -242,10 +193,6 @@ export default function NosotrosSection({ onOpenLeadModal }) {
                 </span>
                 <ShieldCheck className="w-5 h-5 text-[#e6c15c]" />
               </div>
-
-              <h3 className="text-lg font-bold text-white font-serif mt-4 mb-3">
-                Ficha de Gobernanza Jurídica
-              </h3>
 
               <div className="space-y-2.5 text-xs">
                 <div className="bg-white/5 p-3 rounded-lg border border-white/5">
@@ -441,60 +388,72 @@ export default function NosotrosSection({ onOpenLeadModal }) {
                 Cuerpo Académico Especializado
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-white">
-                Claustro Académico Colegiado
+                Claustro Académico
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
-                Nuestro cuerpo docente está integrado por hablantes nativos, traductores en activo, peritos intérpretes y maestros en lingüística aplicada con acreditaciones oficiales de reconocimiento mundial.
+                Nuestro cuerpo docente está integrado por hablantes nativos, traductores en activo, peritos intérpretes y maestros en lingüística aplicada con acreditaciones oficiales de reconocimiento mundial. Haz clic en cada academia para consultar la plantilla docente.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {facultyColleges.map((col, idx) => (
+              {FACULTY_COLLEGES.map((col, idx) => (
                 <div
-                  key={idx}
-                  className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-euro-gold/40 transition-all flex flex-col justify-between space-y-4"
+                  key={col.id}
+                  onClick={() => setSelectedAcademyId(col.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedAcademyId(col.id);
+                    }
+                  }}
+                  className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-euro-gold/50 hover:bg-white/[0.08] transition-all flex flex-col justify-between space-y-4 cursor-pointer group text-left shadow-sm hover:shadow-xl hover:-translate-y-1"
                 >
                   <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-xl bg-euro-gold/15 text-euro-gold flex items-center justify-center font-bold">
-                      <BookOpen className="w-5 h-5" />
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-euro-gold/15 text-euro-gold flex items-center justify-center font-bold group-hover:scale-105 group-hover:bg-euro-gold group-hover:text-euro-dark transition-all">
+                        {idx === 0 && <BookOpen className="w-5 h-5" />}
+                        {idx === 1 && <Award className="w-5 h-5" />}
+                        {idx === 2 && <Globe2 className="w-5 h-5" />}
+                        {idx === 3 && <GraduationCap className="w-5 h-5" />}
+                      </div>
+                      <span className="text-[10px] text-euro-gold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5 font-medium">
+                        Ver docentes <ChevronRight className="w-3.5 h-3.5" />
+                      </span>
                     </div>
+
                     <div>
                       <span className="text-[10px] font-mono text-euro-gold uppercase tracking-wider block">
-                        {col.credential}
+                        {col.badge || col.credential}
                       </span>
-                      <h4 className="font-bold text-sm text-white font-display mt-0.5">
+                      <h4 className="font-bold text-sm text-white font-display mt-0.5 group-hover:text-euro-gold transition-colors">
                         {col.area}
                       </h4>
                     </div>
+
                     <p className="text-xs text-slate-300 leading-relaxed font-light">
                       {col.desc}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 text-[10px] text-slate-400 font-mono">
-                    {col.subjects}
+                  <div className="pt-3 border-t border-white/10 text-[10px] text-slate-400 font-mono flex items-center justify-between">
+                    <span>{col.subjects}</span>
                   </div>
                 </div>
               ))}
             </div>
-
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Users className="w-5 h-5 text-euro-gold shrink-0" />
-                <p className="text-xs text-slate-300">
-                  ¿Te interesa unirte al claustro docente o conocer las líneas de investigación?
-                </p>
-              </div>
-              <button
-                onClick={onOpenLeadModal}
-                className="btn-tactile px-6 py-2.5 bg-gradient-to-r from-euro-gold to-amber-500 text-euro-dark font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shrink-0 cursor-pointer"
-              >
-                Contactar a Coordinación
-              </button>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Modal de Claustro Docente por Academia */}
+      <FacultyModal
+        isOpen={Boolean(selectedAcademyId)}
+        academyId={selectedAcademyId}
+        onClose={() => setSelectedAcademyId(null)}
+        onOpenLeadModal={onOpenLeadModal}
+      />
     </div>
   );
 }

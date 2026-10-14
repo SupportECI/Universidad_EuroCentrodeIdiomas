@@ -32,7 +32,7 @@ export default function Hero({ onNavigate }) {
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c8963e] text-[#070a26] text-xs font-bold uppercase tracking-wider shadow-md">
                 <span className="w-2 h-2 rounded-full bg-[#070a26] animate-pulse" />
-                Convocatoria 2026-2027
+                Convocatoria 2027
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-slate-200 text-xs font-medium tracking-wide border border-white/15">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#e6c15c]" />
@@ -50,28 +50,28 @@ export default function Hero({ onNavigate }) {
             {/* Subtítulo sintético y directo */}
             <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-light">
               Formación universitaria trilingüe simultánea en{" "}
-              <strong className="text-white font-medium">Inglés, Francés e Italiano</strong>. Laboratorios acústicos, titulación oficial y cédula federal SEP en Plantel Bicentenario.
+              <strong className="text-white font-medium">Inglés, Francés e Italiano</strong>. Titulación oficial y cédula federal SEP en Plantel Bicentenario.
             </p>
 
             {/* Trilogía de Beneficios Rápidos */}
             <div className="grid grid-cols-3 gap-3 max-w-lg pt-1">
               <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/15 transition-colors">
                 <span className="text-xs sm:text-sm font-bold text-[#e6c15c] block">
-                  MCER C1 / C2
+                  MCER C1
                 </span>
-                <span className="text-[11px] text-slate-300">Estándar europeo</span>
+
               </div>
               <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/15 transition-colors">
                 <span className="text-xs sm:text-sm font-bold text-[#e6c15c] block">
                   3 Años
                 </span>
-                <span className="text-[11px] text-slate-300">9 Cuatrimestres</span>
+
               </div>
               <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/15 transition-colors">
                 <span className="text-xs sm:text-sm font-bold text-[#e6c15c] block">
                   Práctica Real
                 </span>
-                <span className="text-[11px] text-slate-300">Cabinas en vivo</span>
+
               </div>
             </div>
 
@@ -90,7 +90,7 @@ export default function Hero({ onNavigate }) {
                 className="btn-tactile inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider py-4 px-7 rounded-2xl border border-white/20 backdrop-blur-md transition-all cursor-pointer"
               >
                 <BookOpen className="w-4 h-4 text-[#e6c15c]" />
-                <span>Plan de Estudios (58 Materias)</span>
+                <span>Plan de Estudios</span>
               </button>
             </div>
           </div>

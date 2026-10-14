@@ -1,7 +1,5 @@
 import {
   Languages,
-  Activity,
-  Headphones,
   Users2,
   ChevronRight,
   Mic,
@@ -47,7 +45,7 @@ export default function Competencies() {
                   Trilingüismo Operativo: Inglés, Francés e Italiano
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                  Desarrollo progresivo hasta niveles C1 y C2 con énfasis en redacción ejecutiva, argumentación retórica y adaptación cultural profunda para diplomacia, comercio exterior y academia.
+                  Desarrollo progresivo hasta niveles C1 con énfasis en redacción ejecutiva, argumentación retórica y adaptación cultural profunda para diplomacia, comercio exterior y academia.
                 </p>
               </div>
             </div>
@@ -57,7 +55,7 @@ export default function Competencies() {
               <div>
                 <div className="flex justify-between items-center text-xs text-slate-600 mb-1.5">
                   <span className="font-semibold text-slate-800">Inglés</span>
-                  <span className="text-[#7e5700] font-bold">Nivel C2</span>
+                  <span className="text-[#7e5700] font-bold">Nivel C1</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-[#c8963e] h-full w-[95%] rounded-full" />
@@ -67,7 +65,7 @@ export default function Competencies() {
               <div>
                 <div className="flex justify-between items-center text-xs text-slate-600 mb-1.5">
                   <span className="font-semibold text-slate-800">Francés</span>
-                  <span className="text-[#7e5700] font-bold">Nivel C1</span>
+                  <span className="text-[#7e5700] font-bold">Nivel B2</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-[#c8963e] h-full w-[85%] rounded-full" />
@@ -77,38 +75,12 @@ export default function Competencies() {
               <div>
                 <div className="flex justify-between items-center text-xs text-slate-600 mb-1.5">
                   <span className="font-semibold text-slate-800">Italiano</span>
-                  <span className="text-[#7e5700] font-bold">Nivel C1</span>
+                  <span className="text-[#7e5700] font-bold">Nivel B1</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div className="bg-[#c8963e] h-full w-[80%] rounded-full" />
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Bloque 2: Fonética y Laboratorio Acústico (4 Cols) */}
-          <div className="lg:col-span-4 bg-[#0b1d3a] text-white rounded-2xl p-7 sm:p-8 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="w-12 h-12 rounded-xl bg-white/10 text-[#e6c15c] flex items-center justify-center">
-                  <Activity className="w-6 h-6" />
-                </span>
-                <span className="text-[11px] font-medium text-slate-300">
-                  Entrenamiento Fonético
-                </span>
-              </div>
-              <div className="my-3 space-y-2">
-                <h3 className="font-bold text-xl text-white font-serif">
-                  Laboratorio de Acústica y Prosodia
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed font-light">
-                  Software de corrección fonológica para eliminar acentos de interferencia y lograr pronunciación neutra profesional en cabina.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-[#e6c15c] pt-4 border-t border-white/10">
-              <Headphones className="w-4 h-4" />
-              <span>Estaciones de escucha asistida 100% equipadas</span>
             </div>
           </div>
 
@@ -118,9 +90,6 @@ export default function Competencies() {
               <span className="w-12 h-12 rounded-xl bg-slate-100 text-[#7e5700] flex items-center justify-center mb-4">
                 <Mic className="w-6 h-6" />
               </span>
-              <h3 className="font-bold text-lg text-[#0b1d3a] font-serif group-hover:text-[#7e5700] transition-colors mb-2">
-                Interpretación en Cabina Simultánea
-              </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-light">
                 Técnicas de síntesis inmediata, toma de notas consecutivas (Stenomask) y traducción a la vista para foros gubernamentales e internacionales.
               </p>
@@ -137,9 +106,6 @@ export default function Competencies() {
               <span className="w-12 h-12 rounded-xl bg-slate-100 text-[#7e5700] flex items-center justify-center mb-4">
                 <Cpu className="w-6 h-6" />
               </span>
-              <h3 className="font-bold text-lg text-[#0b1d3a] font-serif group-hover:text-[#7e5700] transition-colors mb-2">
-                CAT Tools &amp; Localización Digital
-              </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-light">
                 Dominio de memorias de traducción, subtitulaje audiovisual, gestión de glosarios terminológicos y pos-edición de motores neuronales.
               </p>
@@ -156,9 +122,6 @@ export default function Competencies() {
               <span className="w-12 h-12 rounded-xl bg-slate-100 text-[#7e5700] flex items-center justify-center mb-4">
                 <Users2 className="w-6 h-6" />
               </span>
-              <h3 className="font-bold text-lg text-[#0b1d3a] font-serif group-hover:text-[#7e5700] transition-colors mb-2">
-                Diplomacia &amp; Protocolo Internacional
-              </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-light">
                 Manejo de códigos culturales, negociación transfronteriza y consultoría editorial para empresas globales y organismos multilaterales.
               </p>

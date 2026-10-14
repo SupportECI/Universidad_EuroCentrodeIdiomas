@@ -2,9 +2,8 @@ import { Play, CheckCircle2, ArrowRight, Video, Sparkles } from "lucide-react";
 
 export default function EducationalModelTeaser({ onNavigate, onOpenVideo }) {
   const points = [
-    { text: "Laboratorios Fonéticos Interactivos con software de análisis acústico.", tag: "Tecnología" },
     { text: "Docentes certificados y profesores invitados nativos de cada lengua.", tag: "Claustro" },
-    { text: "Práctica real de traducción e interpretación en cabinas especializadas.", tag: "Práctica" },
+    { text: "Práctica real de traducción e interpretación.", tag: "Práctica" },
     { text: "Acompañamiento tutorial continuo en grupos de cupo limitado.", tag: "Atención" },
   ];
 

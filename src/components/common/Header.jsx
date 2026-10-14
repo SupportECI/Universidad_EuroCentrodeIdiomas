@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Menu,
   X,
@@ -9,13 +10,11 @@ import {
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
 
-export default function Header({
-  activeSection,
-  setActiveSection,
-  onOpenLeadModal,
-}) {
+export default function Header({ onOpenLeadModal }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -32,26 +31,20 @@ export default function Header({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (sectionId) => {
-    setActiveSection(sectionId);
+  const handleNavClick = (path) => {
+    navigate(path);
     setMobileMenuOpen(false);
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const navLinks = [
-    { id: "inicio", label: "Inicio" },
-    { id: "nosotros", label: "Nosotros" },
-    { id: "licenciatura", label: "Licenciatura" },
-    { id: "modelo-educativo", label: "Modelo" },
-    { id: "vida-estudiantil", label: "Campus" },
-    { id: "admisiones", label: "Admisiones" },
-    { id: "contacto", label: "Contacto" },
+    { id: "inicio", label: "Inicio", path: "/" },
+    { id: "nosotros", label: "Nosotros", path: "/nosotros" },
+    { id: "licenciatura", label: "Licenciatura", path: "/licenciatura" },
+    { id: "modelo-educativo", label: "Modelo", path: "/modelo-educativo" },
+    { id: "vida-estudiantil", label: "Campus", path: "/vida-estudiantil" },
+    { id: "admisiones", label: "Admisiones", path: "/admisiones" },
+    { id: "contacto", label: "Contacto", path: "/contacto" },
   ];
 
   return (
@@ -106,7 +99,7 @@ export default function Header({
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
           {/* Marca / Identidad: Tipografía sobria de corte universitario */}
           <button
-            onClick={() => handleNavClick("inicio")}
+            onClick={() => handleNavClick("/")}
             className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
             aria-label="Ir al inicio"
           >
@@ -127,12 +120,15 @@ export default function Header({
           {/* Menú de enlaces desktop: enlaces limpios con indicador sutil */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive =
+                link.path === "/"
+                  ? location.pathname === "/"
+                  : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
 
               return (
                 <button
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  onClick={() => handleNavClick(link.path)}
                   className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer relative ${
                     isActive
                       ? "text-[#070a26] font-semibold bg-slate-100"
@@ -182,12 +178,15 @@ export default function Header({
             </div>
 
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive =
+                link.path === "/"
+                  ? location.pathname === "/"
+                  : location.pathname === link.path || location.pathname.startsWith(`${link.path}/`);
 
               return (
                 <button
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  onClick={() => handleNavClick(link.path)}
                   className={`w-full text-left py-2.5 px-3 rounded-md text-sm font-medium flex items-center justify-between transition-colors ${
                     isActive
                       ? "bg-slate-100 text-[#070a26] font-semibold"
