@@ -28,6 +28,7 @@ import ModeloEducativoSection from "./components/sections/ModeloEducativoSection
 import VidaEstudiantilSection from "./components/sections/VidaEstudiantilSection";
 import AdmisionesSection from "./components/sections/AdmisionesSection";
 import ContactoSection from "./components/sections/ContactoSection";
+import GaleriaSection from "./components/sections/GaleriaSection";
 
 import "./App.css";
 
@@ -55,6 +56,7 @@ export default function App() {
       licenciatura: "/licenciatura",
       "modelo-educativo": "/modelo-educativo",
       "vida-estudiantil": "/vida-estudiantil",
+      galeria: "/galeria",
       admisiones: "/admisiones",
       contacto: "/contacto",
     };
@@ -117,7 +119,7 @@ export default function App() {
           <Route
             path="/nosotros"
             element={
-              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+              <div className="animate-fade-in pt-14">
                 <NosotrosSection
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
                 />
@@ -129,7 +131,7 @@ export default function App() {
           <Route
             path="/licenciatura"
             element={
-              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+              <div className="animate-fade-in pt-14">
                 <LicenciaturaSection
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
                   onSelectSubject={(subject) => setSelectedSubject(subject)}
@@ -142,7 +144,7 @@ export default function App() {
           <Route
             path="/modelo-educativo"
             element={
-              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+              <div className="animate-fade-in pt-14">
                 <ModeloEducativoSection
                   onOpenVideo={() => setIsVideoModalOpen(true)}
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
@@ -158,6 +160,18 @@ export default function App() {
             element={
               <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
                 <VidaEstudiantilSection
+                  onOpenLeadModal={() => setIsLeadModalOpen(true)}
+                />
+              </div>
+            }
+          />
+
+          {/* Ruta: /galeria */}
+          <Route
+            path="/galeria"
+            element={
+              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+                <GaleriaSection
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
                 />
               </div>
@@ -180,7 +194,7 @@ export default function App() {
           <Route
             path="/contacto"
             element={
-              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+              <div className="animate-fade-in pt-14 pb-8 lg:pb-16">
                 <ContactoSection
                   onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
                 />

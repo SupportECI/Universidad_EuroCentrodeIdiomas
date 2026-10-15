@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   MapPin,
   Mail,
+  Phone,
   Clock,
   Send,
   CheckCircle2,
@@ -26,6 +27,7 @@ export default function ContactoSection({ onOpenPrivacy }) {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,10 +36,38 @@ export default function ContactoSection({ onOpenPrivacy }) {
       return;
     }
     setIsSubmitting(true);
+
+    const situacionMap = {
+      cursando_bachillerato: "Cursando último año de Bachillerato",
+      bachillerato_concluido: "Bachillerato Concluido",
+      cambio_carrera: "Cambio de Carrera / Universidad",
+      otro: "Otro",
+    };
+
+    const message = `¡Hola! Me contacto a través del formulario del sitio web (Plantel Bicentenario). Me gustaría recibir orientación e informes sobre la Licenciatura en Idiomas.
+
+📋 *Datos de Contacto:*
+• *Nombre:* ${formData.nombre.trim()} ${formData.apellidos.trim()}
+• *Celular / WhatsApp:* ${formData.celular.trim()}
+• *Correo:* ${formData.correo.trim()}
+• *Ciudad:* ${formData.ciudad.trim()}
+• *Situación Académica:* ${situacionMap[formData.situacionActual] || formData.situacionActual}
+
+Agradezco su atención para orientarme sobre el plan curricular, costos y convocatorias.`;
+
+    const targetUrl = `https://wa.me/529616138049?text=${encodeURIComponent(message)}`;
+    setWhatsappLink(targetUrl);
+
+    try {
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // Ignorar bloqueo de popups
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 700);
+    }, 450);
   };
   return (
     <div id="contacto" className="w-full bg-slate-50 space-y-24 pb-16 lg:pb-24">
@@ -135,12 +165,24 @@ export default function ContactoSection({ onOpenPrivacy }) {
                   ¡Gracias por comunicarte con nosotros!
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed font-light">
-                  Hemos canalizado tus datos al equipo de Admisiones del Plantel Bicentenario. Un asesor se comunicará contigo vía WhatsApp o correo electrónico para brindarte seguimiento personalizado.
+                  Hemos generado tu solicitud dirigida al número oficial de WhatsApp{" "}
+                  <span className="font-semibold text-emerald-700 font-mono">+52 (961) 613-8049</span>. Un asesor de Admisiones te brindará seguimiento personalizado.
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                  {whatsappLink && (
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs transition-colors shadow-md"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Abrir Chat de WhatsApp</span>
+                    </a>
+                  )}
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="btn-tactile px-6 py-2.5 bg-euro-dark hover:bg-euro-blue text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                    className="w-full sm:w-auto btn-tactile px-5 py-2.5 bg-euro-dark hover:bg-euro-blue text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                   >
                     Enviar otro mensaje
                   </button>
@@ -358,12 +400,35 @@ export default function ContactoSection({ onOpenPrivacy }) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MessageCircle className="w-4 h-4 text-euro-gold shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-euro-gold shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-slate-800 font-display">
+                      Teléfono Directo Plantel:
+                    </strong>
+                    <a
+                      href={`tel:${INSTITUTION_INFO.phone}`}
+                      className="text-euro-blue hover:underline font-mono font-medium"
+                    >
+                      {INSTITUTION_INFO.phoneDisplay}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-800 font-display">
                       Atención WhatsApp / Admisiones:
                     </strong>
-                    <span className="text-slate-500">
+                    <a
+                      href={`https://wa.me/529616138049?text=${encodeURIComponent(INSTITUTION_INFO.whatsappDefaultMsg)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-700 hover:underline font-semibold block"
+                    >
+                      +52 (961) 613 8049 • Iniciar chat directo
+                    </a>
+                    <span className="text-slate-500 text-[11px] block mt-0.5">
                       Asesoría en línea disponible de lunes a sábado
                     </span>
                   </div>

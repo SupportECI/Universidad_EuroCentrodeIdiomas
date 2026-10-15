@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
+import logoHeader from "../../assets/Logotipo académico azul y dorado transparente.png";
 
 export default function Header({ onOpenLeadModal }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +44,7 @@ export default function Header({ onOpenLeadModal }) {
     { id: "licenciatura", label: "Licenciatura", path: "/licenciatura" },
     { id: "modelo-educativo", label: "Modelo", path: "/modelo-educativo" },
     { id: "vida-estudiantil", label: "Campus", path: "/vida-estudiantil" },
+    { id: "galeria", label: "Galería", path: "/galeria" },
     { id: "admisiones", label: "Admisiones", path: "/admisiones" },
     { id: "contacto", label: "Contacto", path: "/contacto" },
   ];
@@ -51,9 +53,8 @@ export default function Header({ onOpenLeadModal }) {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* 1. Micro-ticker superior institucional: sobrio, editorial y de alta legibilidad */}
       <div
-        className={`w-full bg-[#070a26] text-slate-300 text-[11px] border-b border-white/10 transition-all duration-300 ${
-          isScrolled ? "hidden md:block py-1 opacity-90" : "py-1.5"
-        }`}
+        className={`w-full bg-[#070a26] text-slate-300 text-[11px] border-b border-white/10 transition-all duration-300 ${isScrolled ? "hidden md:block py-1 opacity-90" : "py-1.5"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3 sm:gap-4 font-normal tracking-normal text-slate-400">
@@ -78,11 +79,11 @@ export default function Header({ onOpenLeadModal }) {
             </a>
             <span className="hidden md:inline text-white/20">/</span>
             <a
-              href="tel:9610000000"
-              className="inline-flex items-center gap-1 text-slate-300 hover:text-white transition-colors"
+              href={`tel:${INSTITUTION_INFO.phone}`}
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-mono"
             >
               <Phone className="w-3 h-3 text-[#c8963e]" />
-              Informes Plantel
+              <span>{INSTITUTION_INFO.phoneDisplay}</span>
             </a>
           </div>
         </div>
@@ -90,31 +91,23 @@ export default function Header({ onOpenLeadModal }) {
 
       {/* 2. Barra de Navegación Principal: minimalista, precisa y balanceada */}
       <nav
-        className={`w-full transition-all duration-200 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5"
-            : "bg-white border-b border-slate-200/60 py-3.5"
-        }`}
+        className={`w-full transition-all duration-200 ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5"
+          : "bg-white border-b border-slate-200/60 py-3.5"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
-          {/* Marca / Identidad: Tipografía sobria de corte universitario */}
+          {/* Marca / Identidad: Logotipo institucional oficial */}
           <button
             onClick={() => handleNavClick("/")}
-            className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
-            aria-label="Ir al inicio"
+            className="flex items-center text-left group cursor-pointer focus:outline-none py-0.5"
+            aria-label="Euro Centro de Estudios Superiores - Ir al inicio"
           >
-            <div className="w-9 h-9 rounded-lg bg-[#070a26] text-white flex items-center justify-center font-serif text-lg font-bold border border-[#070a26] transition-transform duration-200 group-hover:border-[#c8963e]">
-              <span>E</span>
-            </div>
-
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold tracking-tight text-[#070a26] leading-none group-hover:text-[#1211ab] transition-colors">
-                Euro Centro
-              </span>
-              <span className="text-[10px] tracking-wider text-slate-500 uppercase mt-0.5 font-medium leading-none">
-                Estudios Superiores
-              </span>
-            </div>
+            <img
+              src={logoHeader}
+              alt="Euro Centro de Estudios Superiores"
+              className="h-12 sm:h-12 md:h-18 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            />
           </button>
 
           {/* Menú de enlaces desktop: enlaces limpios con indicador sutil */}
@@ -129,11 +122,10 @@ export default function Header({ onOpenLeadModal }) {
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.path)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer relative ${
-                    isActive
-                      ? "text-[#070a26] font-semibold bg-slate-100"
-                      : "text-slate-600 hover:text-[#070a26] hover:bg-slate-50"
-                  }`}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer relative ${isActive
+                    ? "text-[#070a26] font-semibold bg-slate-100"
+                    : "text-slate-600 hover:text-[#070a26] hover:bg-slate-50"
+                    }`}
                 >
                   {link.label}
                   {isActive && (
@@ -187,11 +179,10 @@ export default function Header({ onOpenLeadModal }) {
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.path)}
-                  className={`w-full text-left py-2.5 px-3 rounded-md text-sm font-medium flex items-center justify-between transition-colors ${
-                    isActive
-                      ? "bg-slate-100 text-[#070a26] font-semibold"
-                      : "text-slate-700 hover:bg-slate-50 hover:text-[#070a26]"
-                  }`}
+                  className={`w-full text-left py-2.5 px-3 rounded-md text-sm font-medium flex items-center justify-between transition-colors ${isActive
+                    ? "bg-slate-100 text-[#070a26] font-semibold"
+                    : "text-slate-700 hover:bg-slate-50 hover:text-[#070a26]"
+                    }`}
                 >
                   <span>{link.label}</span>
                   {isActive ? (

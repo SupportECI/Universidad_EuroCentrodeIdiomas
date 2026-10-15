@@ -13,8 +13,9 @@ import {
   STUDY_AREAS,
   INSTITUTION_INFO,
   CERTIFICATIONS_DATA,
+  VINCULACION_DATA,
 } from "../../data/curriculumData";
-import { CertificatesModal } from "../common/Modals";
+import { CertificatesModal, VinculacionModal } from "../common/Modals";
 
 export default function LicenciaturaSection({
   onOpenLeadModal,
@@ -23,6 +24,7 @@ export default function LicenciaturaSection({
   const [selectedCuatri, setSelectedCuatri] = useState(1);
   const [selectedArea, setSelectedArea] = useState("all");
   const [selectedCertCategory, setSelectedCertCategory] = useState(null);
+  const [selectedVinculacionSector, setSelectedVinculacionSector] = useState(null);
 
   const currentCuatriData = CURRICULUM_DATA.find(
     (c) => c.cuatrimestre === selectedCuatri
@@ -385,7 +387,17 @@ export default function LicenciaturaSection({
             {CERTIFICATIONS_DATA.map((cat) => (
               <div
                 key={cat.id}
-                className="group p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-euro-gold/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between gap-4"
+                onClick={() => setSelectedCertCategory(cat.id)}
+                className="group p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-slate-400 hover:shadow-md transition-all duration-200 flex flex-col justify-between gap-4 cursor-pointer"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedCertCategory(cat.id);
+                  }
+                }}
+                aria-label={`Ver certificados de ${cat.name}`}
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
@@ -397,13 +409,13 @@ export default function LicenciaturaSection({
                         {cat.targetLevel === "RVOE" ? "Acuerdo SEP" : `Nivel ${cat.targetLevel}`}
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-euro-gold/15 text-euro-dark border border-euro-gold/30">
+                    <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-slate-200/70 text-slate-700">
                       {cat.badge}
                     </span>
                   </div>
 
                   <div>
-                    <h5 className="font-bold text-sm text-euro-dark group-hover:text-euro-blue transition-colors">
+                    <h5 className="font-bold text-sm text-slate-900 group-hover:text-euro-blue transition-colors">
                       {cat.name}
                     </h5>
                     <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
@@ -417,10 +429,10 @@ export default function LicenciaturaSection({
                       Incluye acreditaciones:
                     </span>
                     <div className="flex flex-wrap gap-1">
-                      {cat.certificates.map((cert) => (
+                      {cat.certificates.slice(0, 3).map((cert, idx) => (
                         <span
-                          key={cert.id}
-                          className="text-[10.5px] px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-medium font-mono"
+                          key={idx}
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-mono"
                         >
                           {cert.levelBadge}
                         </span>
@@ -429,13 +441,10 @@ export default function LicenciaturaSection({
                   </div>
                 </div>
 
-                <button
-                  onClick={() => setSelectedCertCategory(cat.id)}
-                  className="w-full mt-2 py-2.5 px-3 rounded-xl bg-euro-dark hover:bg-euro-navy text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm group-hover:shadow-md cursor-pointer border border-euro-gold/20"
-                >
+                <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-700 font-semibold group-hover:text-slate-950">
                   <span>Ver certificados</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-euro-gold transition-transform group-hover:translate-x-1" />
-                </button>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-slate-900 transition-transform group-hover:translate-x-1" />
+                </div>
               </div>
             ))}
           </div>
@@ -456,27 +465,54 @@ export default function LicenciaturaSection({
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <Building className="w-5 h-5 text-euro-blue" />
-              <h5 className="font-bold text-xs text-euro-dark">Sector Corporativo</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
-                Empresas globales e industrias con operaciones de exportación y enlace internacional.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <Globe2 className="w-5 h-5 text-euro-royal" />
-              <h5 className="font-bold text-xs text-euro-dark">Sector Diplomático y Turístico</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
-                Organismos no gubernamentales, secretarías de turismo y representaciones culturales.
-              </p>
-            </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <BookOpen className="w-5 h-5 text-euro-gold-dark" />
-              <h5 className="font-bold text-xs text-euro-dark">Sector Educativo</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
-                Institutos bilingües y universidades para residencia docente y proyectos de investigación.
-              </p>
-            </div>
+            {VINCULACION_DATA.map((sector) => {
+              const IconComponent =
+                sector.id === "corporativo"
+                  ? Building
+                  : sector.id === "diplomatico"
+                    ? Globe2
+                    : BookOpen;
+
+              return (
+                <div
+                  key={sector.id}
+                  onClick={() => setSelectedVinculacionSector(sector.id)}
+                  className="group p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-slate-400 hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedVinculacionSector(sector.id);
+                    }
+                  }}
+                  aria-label={`Ver convenios de ${sector.title}`}
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center text-slate-700 shadow-2xs group-hover:scale-105 transition-transform">
+                        <IconComponent className="w-4 h-4 text-slate-700" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-slate-500 uppercase bg-slate-200/60 px-2 py-0.5 rounded-full">
+                        {sector.badge.split("&")[0].trim()}
+                      </span>
+                    </div>
+
+                    <h5 className="font-bold text-sm text-slate-900 group-hover:text-euro-blue transition-colors pt-1">
+                      {sector.title}
+                    </h5>
+                    <p className="text-[11px] text-slate-500 leading-relaxed font-normal">
+                      {sector.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-700 font-semibold group-hover:text-slate-950">
+                    <span>Ver convenios y prácticas</span>
+                    <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -486,6 +522,14 @@ export default function LicenciaturaSection({
         isOpen={Boolean(selectedCertCategory)}
         categoryId={selectedCertCategory}
         onClose={() => setSelectedCertCategory(null)}
+        onOpenLeadModal={onOpenLeadModal}
+      />
+
+      {/* Modal de Vinculación y Convenios de Práctica Profesional */}
+      <VinculacionModal
+        isOpen={Boolean(selectedVinculacionSector)}
+        sectorId={selectedVinculacionSector}
+        onClose={() => setSelectedVinculacionSector(null)}
         onOpenLeadModal={onOpenLeadModal}
       />
     </div>

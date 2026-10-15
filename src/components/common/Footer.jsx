@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  GraduationCap,
   MapPin,
   Mail,
   Phone,
@@ -8,13 +7,45 @@ import {
   ExternalLink,
   ShieldCheck,
   ArrowUp,
-  Sparkles,
   ChevronRight,
-  Award,
-  BookOpen,
-  MessageCircle,
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
+import logoFooter from "../../assets/Logotipo circular con dos estrellas doradas (1).png";
+
+function FacebookIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
+}
 
 export default function Footer({
   onNavigate,
@@ -40,55 +71,16 @@ export default function Footer({
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1211ab]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#c8963e]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* 1. Franja Superior de Acción Rápida & Respaldo Institucional */}
-      <div className="border-b border-white/10 bg-gradient-to-r from-[#070a26] via-[#0b1d3a] to-[#070a26] px-4 sm:px-8 py-8 relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#c8963e] to-[#7e5700] p-0.5 shadow-lg shrink-0 hidden sm:flex items-center justify-center">
-              <div className="w-full h-full bg-[#070a26] rounded-[14px] flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-[#e6c15c]" />
-              </div>
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[#c8963e]/15 border border-[#c8963e]/30 text-[#e6c15c] text-[11px] font-bold uppercase tracking-wider font-mono">
-                Ciclo 2027-1 • Admisiones Abiertas
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white font-serif mt-1">
-                ¿Listo para iniciar tu formación universitaria en idiomas?
-              </h3>
-              <p className="text-xs text-slate-300 font-light max-w-xl">
-                Agenda tu examen diagnóstico sin costo y conoce los apoyos y becas académicas vigentes en el Plantel Bicentenario.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
-            <button
-              onClick={onOpenLeadModal}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#c8963e] via-[#e6c15c] to-[#c8963e] hover:brightness-110 text-[#070a26] font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-xl cursor-pointer flex items-center justify-center gap-2 active:scale-95"
-            >
-              <span>Solicitar información</span>
-              <ChevronRight className="w-4 h-4 text-[#070a26]" />
-            </button>
-            <button
-              onClick={() => onNavigate("admisiones")}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs tracking-wide transition-all duration-200 border border-white/20 cursor-pointer flex items-center justify-center gap-2"
-            >
-              <Award className="w-4 h-4 text-[#e6c15c]" />
-              <span>Ver Proceso de Admisión</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* 2. Cuerpo Principal de 4 Columnas */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
         {/* Columna 1: Identidad y Prestigio */}
         <div className="space-y-5">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-[#0b1d3a] border border-[#c8963e]/40 flex items-center justify-center text-[#e6c15c] shadow-md">
-              <GraduationCap className="w-6 h-6" />
-            </div>
+            <img
+              src={logoFooter}
+              alt="Euro Centro de Estudios Superiores"
+              className="w-20 h-20 rounded-full object-contain p-0.5 border border-[#c8963e]/40 shadow-lg shrink-0 bg-[#070a26]"
+            />
             <div>
               <span className="font-extrabold text-sm text-white uppercase block leading-tight tracking-wide font-display">
                 Euro Centro
@@ -123,27 +115,32 @@ export default function Footer({
                 href={INSTITUTION_INFO.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#1877F2] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm group"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#1877F2] border border-white/10 hover:border-[#1877F2] flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 shadow-sm group"
                 aria-label="Página oficial de Facebook"
+                title="Facebook Oficial"
               >
-                <span className="font-bold text-xs font-mono group-hover:scale-110 transition-transform">fb</span>
+                <FacebookIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
               <a
                 href={INSTITUTION_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm group"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 shadow-sm group"
                 aria-label="Perfil oficial de Instagram"
+                title="Instagram Oficial"
               >
-                <span className="font-bold text-xs font-mono group-hover:scale-110 transition-transform">ig</span>
+                <InstagramIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
-              <button
-                onClick={onOpenLeadModal}
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm group cursor-pointer"
+              <a
+                href={`https://wa.me/529616138049?text=${encodeURIComponent(INSTITUTION_INFO.whatsappDefaultMsg)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366] border border-white/10 hover:border-[#25D366] flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 shadow-sm group cursor-pointer"
                 aria-label="Atención y orientación por WhatsApp"
+                title="Atención por WhatsApp"
               >
-                <MessageCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              </button>
+                <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
         </div>
@@ -212,6 +209,15 @@ export default function Footer({
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
                 <span>Instalaciones &amp; Cabinas de Idiomas</span>
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => onNavigate("galeria")}
+                className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
+              >
+                <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
+                <span>Galería Fotográfica &amp; Comunidad</span>
               </button>
             </li>
             <li>
@@ -291,9 +297,20 @@ export default function Footer({
                 <span className="block text-white font-medium text-xs">
                   Atención Telefónica / WhatsApp:
                 </span>
-                <span className="text-[11px] text-slate-400 block">
-                  Módulo de Admisiones y Nuevo Ingreso
-                </span>
+                <a
+                  href={`tel:${INSTITUTION_INFO.phone}`}
+                  className="text-[12px] text-slate-200 hover:text-[#e6c15c] font-mono font-medium block mt-0.5"
+                >
+                  {INSTITUTION_INFO.phoneDisplay}
+                </a>
+                <a
+                  href={`https://wa.me/529616138049?text=${encodeURIComponent(INSTITUTION_INFO.whatsappDefaultMsg)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-[#25D366] hover:underline block"
+                >
+                  Chat directo WhatsApp
+                </a>
               </div>
             </div>
           </div>
@@ -350,13 +367,6 @@ export default function Footer({
           </ul>
 
           <div className="pt-3 space-y-2">
-            <button
-              onClick={onOpenLeadModal}
-              className="w-full py-3 px-4 bg-gradient-to-r from-[#1211ab]/50 to-[#344cb7]/50 hover:from-[#1211ab] hover:to-[#344cb7] text-white rounded-xl text-xs font-bold border border-[#c8963e]/40 transition-all text-center cursor-pointer shadow-md flex items-center justify-center gap-2"
-            >
-              <BookOpen className="w-4 h-4 text-[#e6c15c]" />
-              <span>Solicitar Asesoría de Admisión</span>
-            </button>
             <p className="text-[10px] text-slate-400 text-center">
               Atención personalizada para aspirantes y padres de familia.
             </p>
@@ -367,14 +377,21 @@ export default function Footer({
       {/* 3. Franja Inferior Obligatoria de Validez Oficial RVOE SEP & Copyright */}
       <div className="border-t border-white/10 bg-[#030514] py-8 px-4 sm:px-8 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
-          <div className="space-y-1.5 text-center md:text-left max-w-3xl">
-            <p className="text-slate-300 font-medium text-xs leading-relaxed flex items-center justify-center md:justify-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 inline" />
-              <span>{INSTITUTION_INFO.rvoeFullText}</span>
-            </p>
-            <p className="text-[11px] text-slate-500">
-              © 2026 {INSTITUTION_INFO.companyName} • {INSTITUTION_INFO.name}. Todos los derechos reservados. Tuxtla Gutiérrez, Chiapas.
-            </p>
+          <div className="flex items-center gap-3.5 text-center md:text-left max-w-3xl">
+            <img
+              src={logoFooter}
+              alt="Sello Euro Centro"
+              className="w-10 h-10 rounded-full object-contain border border-[#c8963e]/30 shrink-0 hidden sm:block bg-[#070a26] p-0.5"
+            />
+            <div className="space-y-1.5">
+              <p className="text-slate-300 font-medium text-xs leading-relaxed flex items-center justify-center md:justify-start gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 inline" />
+                <span>{INSTITUTION_INFO.rvoeFullText}</span>
+              </p>
+              <p className="text-[11px] text-slate-500">
+                © 2026 {INSTITUTION_INFO.companyName} • {INSTITUTION_INFO.name}. Todos los derechos reservados. Tuxtla Gutiérrez, Chiapas.
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">

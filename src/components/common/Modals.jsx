@@ -18,7 +18,16 @@ import {
   INSTITUTION_INFO,
   FACULTY_COLLEGES,
   CERTIFICATIONS_DATA,
+  VINCULACION_DATA,
 } from "../../data/curriculumData";
+
+function WhatsAppIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
+}
 
 const getInitialFormData = () => {
   let utm_source = "directo";
@@ -52,6 +61,7 @@ export function LeadModal({ isOpen, onClose, onOpenPrivacy }) {
   const [formData, setFormData] = useState(getInitialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState("");
 
   if (!isOpen) return null;
 
@@ -70,10 +80,48 @@ export function LeadModal({ isOpen, onClose, onOpenPrivacy }) {
       return;
     }
     setIsSubmitting(true);
+
+    const situacionMap = {
+      cursando_bachillerato: "Cursando último año de Bachillerato",
+      bachillerato_concluido: "Bachillerato concluido",
+      cambio_carrera: "Cambio de institución / carrera",
+      otro: "Otro",
+    };
+
+    const medioMap = {
+      redes_sociales: "Redes Sociales (Facebook / Instagram)",
+      recomendacion: "Recomendación de familiar o amigo",
+      alumnos_eurocentro: "Trayectoria en Euro Centro Idiomas",
+      google: "Búsqueda en Google",
+      feria_vocacional: "Feria Universitaria / Vocacional",
+      otro: "Otro medio",
+    };
+
+    const message = `¡Hola! Me comunico desde el sitio web de Euro Centro de Estudios Superiores. Me gustaría solicitar información sobre la Licenciatura en Idiomas (Plantel Bicentenario).
+
+📋 *Datos del Solicitante:*
+• *Nombre:* ${formData.nombre.trim()} ${formData.apellidos.trim()}
+• *Celular / WhatsApp:* ${formData.celular.trim()}
+• *Correo:* ${formData.correo.trim()}
+• *Ciudad:* ${formData.ciudad.trim()}
+• *Situación Académica:* ${situacionMap[formData.situacionActual] || formData.situacionActual}
+• *Medio de contacto:* ${medioMap[formData.medioEnterado] || formData.medioEnterado}
+
+Agradezco su atención para orientarme sobre el plan de estudios, convocatorias y becas.`;
+
+    const targetUrl = `https://wa.me/529616138049?text=${encodeURIComponent(message)}`;
+    setWhatsappLink(targetUrl);
+
+    try {
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // Ignorar bloqueo de popups
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 800);
+    }, 450);
   };
 
   const resetForm = () => {
@@ -118,18 +166,24 @@ export function LeadModal({ isOpen, onClose, onOpenPrivacy }) {
                 ¡Solicitud Registrada con Éxito!
               </h4>
               <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Gracias, <strong>{formData.nombre}</strong>. Hemos recibido tu registro.
-                Un asesor académico del{" "}
-                <span className="font-semibold text-blue-950">
-                  {INSTITUTION_INFO.name}
-                </span>{" "}
-                se pondrá en contacto contigo en breve para brindarte el plan de
-                estudios detallado y asesoría sobre becas.
+                Gracias, <strong>{formData.nombre}</strong>. Hemos generado tu solicitud con destino al número oficial de WhatsApp{" "}
+                <span className="font-semibold text-emerald-700 font-mono">+52 (961) 613-8049</span>. Un asesor académico se pondrá en contacto contigo de inmediato.
               </p>
-              <div className="pt-4">
+              <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                {whatsappLink && (
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs transition-colors shadow-md"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    <span>Abrir Chat de WhatsApp</span>
+                  </a>
+                )}
                 <button
                   onClick={resetForm}
-                  className="px-6 py-2.5 bg-blue-900 text-white rounded-xl font-semibold text-sm hover:bg-blue-800 transition-colors shadow-md"
+                  className="w-full sm:w-auto px-5 py-2.5 bg-slate-800 text-white rounded-xl font-semibold text-xs hover:bg-slate-900 transition-colors shadow-md"
                 >
                   Entendido y Cerrar
                 </button>
@@ -628,7 +682,7 @@ export function SubjectModal({ subject, isOpen, onClose, cuatrimestreNumber }) {
   );
 }
 
-// Subcomponent: Avatar con fallback para docentes (sin emojis, diseño limpio y sobrio)
+// Subcomponent: Avatar con fallback para docentes (diseño limpio y sobrio)
 function TeacherAvatar({ photo, name }) {
   const [imgError, setImgError] = useState(false);
 
@@ -644,7 +698,7 @@ function TeacherAvatar({ photo, name }) {
     : "EC";
 
   return (
-    <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-white/10 bg-slate-800">
+    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 shadow-xs border border-slate-200/90 bg-slate-100">
       {!imgError && photo ? (
         <img
           src={photo}
@@ -653,12 +707,12 @@ function TeacherAvatar({ photo, name }) {
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
         />
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 flex flex-col items-center justify-center text-white">
-          <span className="text-2xl font-bold font-serif text-amber-300">
+        <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex flex-col items-center justify-center text-white">
+          <span className="text-xl font-bold font-serif text-amber-300">
             {initials}
           </span>
-          <span className="text-[9px] text-slate-300 uppercase tracking-wider mt-1">
-            Euro Centro
+          <span className="text-[8px] text-slate-300 uppercase tracking-wider mt-0.5 font-mono">
+            Docente
           </span>
         </div>
       )}
@@ -682,7 +736,7 @@ function getAcademyIcon(id, className = "w-4 h-4") {
   }
 }
 
-// Modal 6: Claustro Académico por Academia (Inglés, Francés, Italiano, Lingüística)
+// Modal 6: Claustro Académico por Academia (Diseño Minimalista sin fondo azul)
 export function FacultyModal({
   isOpen,
   academyId = "ingles",
@@ -722,75 +776,67 @@ export function FacultyModal({
     }
   };
 
-  // Renderizado a través de Portal para evitar trampas de stacking context de padres con transform
   return createPortal(
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-faculty-title"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl bg-[#070a26] text-white rounded-3xl shadow-2xl overflow-hidden border border-white/10 max-h-[92vh] flex flex-col animate-fade-in"
+        className="relative w-full max-w-5xl bg-white text-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 max-h-[90vh] flex flex-col animate-fade-in"
       >
-        {/* Barra superior institucional */}
-        <div className="bg-gradient-to-r from-[#0b1d3a] via-[#11184a] to-[#070a26] p-5 sm:p-6 border-b border-white/10 flex flex-col gap-4 relative">
+        {/* Encabezado limpio y minimalista */}
+        <div className="p-5 sm:p-6 border-b border-slate-100 bg-white space-y-3">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs">
-                <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
-                <span className="text-[#e6c15c] font-bold uppercase tracking-wider text-[11px]">
-                  Claustro Académico • Plantel Bicentenario
-                </span>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[11px] font-mono font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>Claustro Académico • Plantel Bicentenario</span>
               </div>
               <h3
                 id="modal-faculty-title"
-                className="text-xl sm:text-2xl font-bold font-serif text-white flex items-center gap-2.5 mt-1"
+                className="text-xl sm:text-2xl font-bold font-serif text-slate-900 flex items-center gap-2 mt-1"
               >
-                <div className="w-8 h-8 rounded-xl bg-euro-gold/20 text-[#e6c15c] flex items-center justify-center shrink-0">
-                  {getAcademyIcon(currentCollege.id, "w-4 h-4 text-[#e6c15c]")}
-                </div>
-                <span>{currentCollege.area}</span>
+                <GraduationCap className="w-5 h-5 text-amber-600 shrink-0" />
+                <span>Cuerpo Docente y Coordinación</span>
               </h3>
+              <p className="text-xs text-slate-500 max-w-2xl font-normal">
+                Catedráticos acreditados, examinadores oficiales y peritos de la Licenciatura en Idiomas.
+              </p>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 text-white/70 hover:text-white rounded-xl hover:bg-white/10 transition-colors border border-transparent hover:border-white/15 cursor-pointer"
+              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition cursor-pointer shrink-0"
               aria-label="Cerrar modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Selector de Academias (Tabs con iconos formales) */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-white/10">
-            <span className="text-xs text-slate-400 font-medium hidden sm:inline mr-1">
-              Academia:
-            </span>
+          {/* Selector de Academias */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-1 scrollbar-none">
             {FACULTY_COLLEGES.map((college) => {
               const isActive = college.id === activeTab;
               return (
                 <button
                   key={college.id}
                   onClick={() => setActiveTab(college.id)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${isActive
-                    ? "bg-[#c8963e] text-[#070a26] shadow-md font-bold scale-105"
-                    : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5"
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 cursor-pointer ${isActive
+                      ? "bg-slate-900 text-white shadow-xs font-semibold"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
                     }`}
                 >
                   {getAcademyIcon(
                     college.id,
-                    `w-3.5 h-3.5 ${isActive ? "text-[#070a26]" : "text-[#e6c15c]"
-                    }`
+                    `w-3.5 h-3.5 ${isActive ? "text-amber-400" : "text-slate-500"}`
                   )}
                   <span>{college.shortName}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive
-                      ? "bg-[#070a26] text-[#e6c15c]"
-                      : "bg-white/10 text-slate-300"
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive ? "bg-white/20 text-white" : "bg-slate-200/70 text-slate-600"
                       }`}
                   >
                     {college.faculty.length}
@@ -801,89 +847,80 @@ export function FacultyModal({
           </div>
         </div>
 
-        {/* Resumen de la academia seleccionada */}
-        <div className="bg-white/5 px-6 py-4 border-b border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-[#e6c15c] uppercase text-[10.5px] font-bold">
-                {currentCollege.badge || currentCollege.credential}
-              </span>
-            </div>
-            <p className="text-slate-300 text-xs font-light leading-relaxed">
-              {currentCollege.desc}
-            </p>
+        {/* Resumen de academia seleccionada */}
+        <div className="p-3.5 px-5 sm:px-6 bg-slate-50 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-slate-900">{currentCollege.area}</span>
+            <span className="text-slate-300">•</span>
+            <span className="text-slate-500 font-normal">{currentCollege.desc}</span>
           </div>
-
-          <div className="bg-[#0b1d3a] px-3.5 py-2 rounded-xl border border-white/10 text-slate-300 text-[11px] shrink-0 font-mono">
-            <span className="text-[#e6c15c] font-bold block mb-0.5">
-              Materias impartidas:
-            </span>
-            <span>{currentCollege.subjects}</span>
-          </div>
+          <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200/80">
+            {currentCollege.badge || currentCollege.credential}
+          </span>
         </div>
 
-        {/* Listado de Docentes */}
-        <div className="p-5 sm:p-7 overflow-y-auto space-y-6 flex-1">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Listado de Docentes: información concisa y minimalista */}
+        <div className="p-5 sm:p-6 overflow-y-auto space-y-4 max-h-[calc(90vh-210px)] bg-slate-50/60 flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {currentCollege.faculty.map((teacher) => (
               <div
                 key={teacher.id}
-                className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-[#c8963e]/50 transition-all duration-300 flex flex-col justify-between group shadow-lg"
+                className="bg-white border border-slate-200/80 hover:border-slate-300 rounded-2xl p-4 sm:p-5 transition-all shadow-xs flex flex-col justify-between gap-3 group"
               >
-                <div className="space-y-4">
-                  {/* Encabezado del docente: Foto + Datos principales */}
-                  <div className="flex flex-col sm:flex-row items-start gap-4">
+                <div className="space-y-3">
+                  {/* Encabezado del docente */}
+                  <div className="flex items-start gap-3.5">
                     <TeacherAvatar
                       photo={teacher.photo}
                       name={teacher.name}
                     />
 
-                    <div className="space-y-1.5 flex-1 min-w-0">
+                    <div className="space-y-1 flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-1.5">
                         {teacher.nativeSpeaker && (
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                             Hablante Nativo
                           </span>
                         )}
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-slate-300 border border-white/10">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
                           {teacher.origin}
                         </span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#c8963e]/15 text-[#e6c15c] border border-[#c8963e]/20">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200/60">
                           {teacher.experience}
                         </span>
                       </div>
 
-                      <h4 className="text-lg font-bold font-serif text-white group-hover:text-[#e6c15c] transition-colors leading-snug">
+                      <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-snug group-hover:text-blue-900 transition-colors">
                         {teacher.name}
                       </h4>
 
-                      <p className="text-xs text-[#e6c15c] font-medium leading-tight">
+                      <p className="text-xs text-amber-800 font-medium leading-tight line-clamp-1">
                         {teacher.title}
                       </p>
 
-                      <p className="text-[11px] text-slate-400 font-sans">
+                      <p className="text-[11px] text-slate-500 font-normal">
                         {teacher.role}
                       </p>
                     </div>
                   </div>
 
-                  {/* Semblanza biográfica */}
-                  <p className="text-xs text-slate-300 font-light leading-relaxed border-t border-white/10 pt-3">
-                    {teacher.bio}
+                  {/* Semblanza biográfica concisa */}
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal pt-2 border-t border-slate-100">
+                    {teacher.bio.split(".")[0]}.
                   </p>
 
                   {/* Acreditaciones y Certificaciones */}
                   {teacher.certifications && teacher.certifications.length > 0 && (
-                    <div className="space-y-1.5 pt-2">
-                      <span className="text-[10.5px] uppercase tracking-wider text-slate-400 font-bold block flex items-center gap-1">
-                        <Award className="w-3.5 h-3.5 text-[#e6c15c]" />
-                        Certificaciones & Acreditaciones
+                    <div className="space-y-1 pt-1">
+                      <span className="text-[10.5px] uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1">
+                        <Award className="w-3.5 h-3.5 text-amber-600" />
+                        Certificaciones
                       </span>
                       <div className="flex flex-wrap gap-1.5">
-                        {teacher.certifications.map((cert, cIdx) => (
+                        {teacher.certifications.slice(0, 3).map((cert, cIdx) => (
                           <span
                             key={cIdx}
-                            className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-200 font-mono"
+                            className="text-[10.5px] px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/70 text-slate-600 font-mono"
                           >
                             {cert}
                           </span>
@@ -892,18 +929,18 @@ export function FacultyModal({
                     </div>
                   )}
 
-                  {/* Asignaturas a su cargo */}
+                  {/* Materias a su cargo */}
                   {teacher.subjects && teacher.subjects.length > 0 && (
-                    <div className="space-y-1.5 pt-2">
-                      <span className="text-[10.5px] uppercase tracking-wider text-slate-400 font-bold block flex items-center gap-1">
-                        <BookOpen className="w-3.5 h-3.5 text-blue-400" />
-                        Materias que imparte
+                    <div className="space-y-1 pt-1">
+                      <span className="text-[10.5px] uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1">
+                        <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                        Materias a cargo
                       </span>
                       <div className="flex flex-wrap gap-1.5">
-                        {teacher.subjects.map((sub, sIdx) => (
+                        {teacher.subjects.slice(0, 3).map((sub, sIdx) => (
                           <span
                             key={sIdx}
-                            className="text-[10px] px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-400/20 text-blue-200"
+                            className="text-[10.5px] px-2 py-0.5 rounded-md bg-blue-50 border border-blue-200/60 text-blue-800"
                           >
                             {sub}
                           </span>
@@ -917,10 +954,10 @@ export function FacultyModal({
           </div>
         </div>
 
-        {/* Footer institucional con acciones */}
-        <div className="p-4 sm:p-5 bg-[#0b1d3a] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-slate-400 text-[11px]">
-            <GraduationCap className="w-4 h-4 text-[#e6c15c] shrink-0" />
+        {/* Footer institucional minimalista */}
+        <div className="p-4 sm:p-5 bg-white border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>
               Cuerpo académico certificado con validez oficial SEP • RVOE No. {INSTITUTION_INFO.rvoeNumber}
             </span>
@@ -929,7 +966,7 @@ export function FacultyModal({
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-white/10 hover:bg-white/15 text-white rounded-xl text-xs font-semibold transition cursor-pointer"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer"
             >
               Cerrar
             </button>
@@ -939,7 +976,7 @@ export function FacultyModal({
                   onClose();
                   onOpenLeadModal();
                 }}
-                className="px-5 py-2 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] rounded-xl text-xs font-bold transition shadow-md cursor-pointer"
+                className="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition shadow-xs cursor-pointer"
               >
                 Solicitar Informes
               </button>
@@ -952,21 +989,13 @@ export function FacultyModal({
   );
 }
 
-// Modal 7: Catálogo de Certificaciones Oficiales e Internacionales
+// Modal 7: Catálogo de Certificaciones Oficiales e Internacionales (Directo por idioma, sin selector interno)
 export function CertificatesModal({
   isOpen,
   categoryId = "ingles",
   onClose,
   onOpenLeadModal,
 }) {
-  const [activeTab, setActiveTab] = useState(categoryId || "ingles");
-
-  useEffect(() => {
-    if (isOpen && categoryId) {
-      (categoryId);
-    }
-  }, [isOpen, categoryId]);
-
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -984,7 +1013,7 @@ export function CertificatesModal({
   if (!isOpen) return null;
 
   const currentCategory =
-    CERTIFICATIONS_DATA.find((c) => c.id === activeTab) ||
+    CERTIFICATIONS_DATA.find((c) => c.id === categoryId) ||
     CERTIFICATIONS_DATA[0];
 
   const handleBackdropClick = (e) => {
@@ -996,185 +1025,133 @@ export function CertificatesModal({
   return createPortal(
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-certifications-title"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl bg-[#070a26] text-white rounded-3xl shadow-2xl overflow-hidden border border-white/10 max-h-[92vh] flex flex-col animate-fade-in"
+        className="relative w-full max-w-4xl bg-white text-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 max-h-[90vh] flex flex-col animate-fade-in"
       >
-        {/* Barra superior institucional */}
-        <div className="bg-gradient-to-r from-[#0b1d3a] via-[#11184a] to-[#070a26] p-5 sm:p-6 border-b border-white/10 flex flex-col gap-4 relative">
+        {/* Encabezado limpio y directo con los datos de la academia seleccionada */}
+        <div className="p-5 sm:p-6 border-b border-slate-100 bg-white space-y-2">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs">
-                <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
-                <span className="text-[#e6c15c] font-bold uppercase tracking-wider text-[11px] font-mono">
-                  Acreditaciones Oficiales • Licenciatura en Idiomas
-                </span>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[11px] font-mono font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>{currentCategory.badge} • Marco Común Europeo (MCER) / SEP</span>
               </div>
               <h3
                 id="modal-certifications-title"
-                className="text-xl sm:text-2xl font-bold font-serif text-white flex items-center gap-2.5 mt-1"
+                className="text-xl sm:text-2xl font-bold font-serif text-slate-900 flex items-center gap-2 mt-1"
               >
-                <div className="w-8 h-8 rounded-xl bg-euro-gold/20 text-[#e6c15c] flex items-center justify-center shrink-0">
-                  <Award className="w-4 h-4 text-[#e6c15c]" />
-                </div>
-                <span>Certificaciones con Reconocimiento Internacional</span>
+                <Award className="w-5 h-5 text-amber-600 shrink-0" />
+                <span>{currentCategory.name}</span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-light max-w-3xl">
-                Al cursar la Licenciatura en Idiomas en Euro Centro de Estudios Superiores,
-                tu formación curricular te prepara directamente para acreditar las certificaciones más prestigiosas ante instancias globales.
+              <p className="text-xs text-slate-500 max-w-2xl font-normal leading-relaxed">
+                {currentCategory.description}
               </p>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition cursor-pointer shrink-0"
+              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition cursor-pointer shrink-0"
               aria-label="Cerrar modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
-
-          {/* Selector de pestañas por idioma / área */}
-          <div className="flex items-center gap-2 overflow-x-auto pt-2 pb-1 scrollbar-none border-t border-white/10">
-            {CERTIFICATIONS_DATA.map((category) => {
-              const isActive = activeTab === category.id;
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveTab(category.id)}
-                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 cursor-pointer border ${isActive
-                    ? "bg-[#c8963e] text-[#070a26] border-[#e6c15c] shadow-lg font-bold"
-                    : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10 hover:text-white"
-                    }`}
-                >
-                  <span className="text-sm">{category.flag}</span>
-                  <span>{category.name}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive
-                      ? "bg-[#070a26]/20 text-[#070a26]"
-                      : "bg-white/10 text-slate-300"
-                      }`}
-                  >
-                    {category.certificates.length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Contenido desplazable de certificaciones */}
-        <div className="overflow-y-auto max-h-[calc(92vh-190px)] p-5 sm:p-7 space-y-6 bg-gradient-to-b from-[#070a26] via-[#090e33] to-[#070a26]">
-          {/* Banner descriptivo de la academia activa */}
-          <div
-            className={`p-4 sm:p-5 rounded-2xl bg-gradient-to-r ${currentCategory.color.primary} border ${currentCategory.color.border} shadow-lg relative overflow-hidden`}
-          >
-            <div className="relative z-10 space-y-1">
-              <div className="flex items-center gap-2 text-xs font-bold text-white/90">
-                <span className="text-base">{currentCategory.flag}</span>
-                <span className="uppercase tracking-wider font-mono">
-                  {currentCategory.tagline}
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-light">
-                {currentCategory.description}
-              </p>
+        {/* Contenido scrolleable de certificaciones */}
+        <div className="overflow-y-auto max-h-[calc(90vh-170px)] p-5 sm:p-6 space-y-4 bg-slate-50/60 flex-1">
+          {/* Fila de acreditación */}
+          <div className="p-3.5 rounded-2xl bg-white border border-slate-200/80 flex flex-wrap items-center justify-between gap-2 shadow-xs">
+            <div className="flex items-center gap-2 text-xs">
+              <span className="font-bold text-slate-900">{currentCategory.shortName}</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-500 font-normal">{currentCategory.tagline}</span>
             </div>
+            <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200/80">
+              {currentCategory.badge}
+            </span>
           </div>
 
-          {/* Grid de Certificaciones */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {/* Grid de Certificaciones: texto conciso y scannable */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {currentCategory.certificates.map((cert) => (
               <div
                 key={cert.id}
-                className="bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-[#c8963e]/40 rounded-2xl p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between gap-5 relative group"
+                className="bg-white border border-slate-200/80 hover:border-slate-300 rounded-2xl p-4 sm:p-5 transition-all shadow-xs flex flex-col justify-between gap-3 group"
               >
-                <div className="space-y-4">
-                  {/* Encabezado de la tarjeta con badges */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-                    <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#c8963e]/15 text-[#e6c15c] border border-[#c8963e]/30 font-mono">
+                <div className="space-y-3">
+                  {/* Encabezado de la tarjeta */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-2 py-0.5 rounded-md text-[10.5px] font-mono font-bold bg-slate-100 text-slate-700 border border-slate-200">
                       {cert.levelBadge}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-400/25">
+                    <span className="text-[10.5px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">
                       {cert.validity}
                     </span>
                   </div>
 
-                  {/* Título y Organismo Emisor */}
-                  <div className="space-y-1.5">
-                    <h4 className="text-base sm:text-lg font-bold text-white font-serif group-hover:text-[#e6c15c] transition-colors leading-snug">
+                  {/* Título y Organismo */}
+                  <div>
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
                       {cert.title}
                     </h4>
-                    <div className="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
-                      <Building className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                      <span>{cert.institution}</span>
-                    </div>
-                    <div className="text-[11px] text-[#e6c15c] font-mono">
-                      {cert.level}
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
+                      <Building className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span className="truncate">{cert.institution}</span>
                     </div>
                   </div>
 
-                  {/* Alcance y Validez Profesional */}
-                  <p className="text-xs text-slate-300 leading-relaxed font-light">
-                    {cert.scope}
+                  {/* Alcance conciso (texto reducido) */}
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    {cert.scope.split(".")[0]}.
                   </p>
 
-                  {/* Competencias Evaluadas */}
+                  {/* Competencias clave en chips compactos */}
                   {cert.skills && cert.skills.length > 0 && (
-                    <div className="space-y-2 pt-1">
-                      <span className="text-[10.5px] uppercase tracking-wider text-slate-400 font-bold block">
-                        Competencias evaluadas y acreditadas:
-                      </span>
-                      <ul className="space-y-1.5">
-                        {cert.skills.map((skill, skIdx) => (
-                          <li
-                            key={skIdx}
-                            className="flex items-start gap-2 text-xs text-slate-200"
-                          >
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                            <span className="leading-tight">{skill}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {cert.skills.slice(0, 3).map((skill, skIdx) => (
+                        <span
+                          key={skIdx}
+                          className="text-[10.5px] px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/70 text-slate-600 flex items-center gap-1"
+                        >
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                          <span className="truncate max-w-[210px]">{skill}</span>
+                        </span>
+                      ))}
                     </div>
                   )}
                 </div>
 
-                {/* Caja de Preparación en Euro Centro */}
-                <div className="mt-2 p-3 sm:p-3.5 rounded-xl bg-gradient-to-r from-blue-950/50 to-indigo-950/50 border border-blue-400/20 text-xs text-blue-200 flex items-start gap-2.5">
-                  <Sparkles className="w-4 h-4 text-[#e6c15c] shrink-0 mt-0.5" />
-                  <div className="space-y-0.5">
-                    <span className="font-bold text-white text-[11px] block">
-                      Preparación curricular en Euro Centro:
-                    </span>
-                    <p className="text-[11px] text-slate-300 leading-relaxed font-light">
-                      {cert.euroPreparation}
-                    </p>
-                  </div>
+                {/* Preparación curricular compacta */}
+                <div className="pt-2.5 border-t border-slate-100 flex items-center gap-2 text-[11px] text-slate-500">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                  <span className="leading-tight">
+                    <strong className="text-slate-700 font-medium">Preparación:</strong>{" "}
+                    {cert.euroPreparation.split(".")[0]}.
+                  </span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Footer institucional con acciones */}
-        <div className="p-4 sm:p-5 bg-[#0b1d3a] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-slate-400 text-[11px]">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>
-              Certificaciones alineadas al Marco Común Europeo (MCER) • Validez Oficial SEP RVOE No. {INSTITUTION_INFO.rvoeNumber}
-            </span>
+        {/* Footer */}
+        <div className="p-4 sm:p-5 bg-white border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>Acreditaciones oficiales alineadas al MCER • RVOE SEP No. {INSTITUTION_INFO.rvoeNumber}</span>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-white/10 hover:bg-white/15 text-white rounded-xl text-xs font-semibold transition cursor-pointer"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer"
             >
               Cerrar
             </button>
@@ -1184,9 +1161,225 @@ export function CertificatesModal({
                   onClose();
                   onOpenLeadModal();
                 }}
-                className="px-5 py-2 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] rounded-xl text-xs font-bold transition shadow-md cursor-pointer"
+                className="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition shadow-xs cursor-pointer"
               >
                 Solicitar Informes
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+// Modal 8: Vinculación y Convenios de Práctica Profesional (Diseño Minimalista)
+export function VinculacionModal({
+  isOpen,
+  sectorId = "corporativo",
+  onClose,
+  onOpenLeadModal,
+}) {
+  const [activeTab, setActiveTab] = useState(sectorId || "corporativo");
+
+  useEffect(() => {
+    if (isOpen && sectorId) {
+      (sectorId);
+    }
+  }, [isOpen, sectorId]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const currentSector =
+    VINCULACION_DATA.find((s) => s.id === activeTab) || VINCULACION_DATA[0];
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const getSectorIcon = (name, className = "w-4 h-4") => {
+    if (name === "Building") return <Building className={className} />;
+    if (name === "Globe2") return <Globe2 className={className} />;
+    return <BookOpen className={className} />;
+  };
+
+  return createPortal(
+    <div
+      onClick={handleBackdropClick}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-vinculacion-title"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl bg-white text-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200/80 max-h-[90vh] flex flex-col animate-fade-in"
+      >
+        {/* Encabezado limpio y minimalista */}
+        <div className="p-5 sm:p-6 border-b border-slate-100 bg-white space-y-3">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[11px] font-mono font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>Práctica Profesional & Servicio Social • LID-707</span>
+              </div>
+              <h3
+                id="modal-vinculacion-title"
+                className="text-xl sm:text-2xl font-bold font-serif text-slate-900 flex items-center gap-2 mt-1"
+              >
+                <span>Vinculación y Convenios</span>
+              </h3>
+              <p className="text-xs text-slate-500 max-w-xl font-normal">
+                Convenios estratégicos y vinculación real con organizaciones antes de concluir la licenciatura.
+              </p>
+            </div>
+
+            <button
+              onClick={onClose}
+              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition cursor-pointer shrink-0"
+              aria-label="Cerrar modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Selector de pestañas por sector */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-1 scrollbar-none">
+            {VINCULACION_DATA.map((sector) => {
+              const isActive = activeTab === sector.id;
+              return (
+                <button
+                  key={sector.id}
+                  onClick={() => setActiveTab(sector.id)}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-150 flex items-center gap-1.5 cursor-pointer ${isActive
+                    ? "bg-slate-900 text-white shadow-xs font-semibold"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
+                    }`}
+                >
+                  {getSectorIcon(sector.iconName, "w-3.5 h-3.5")}
+                  <span>{sector.shortTitle}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Contenido del sector */}
+        <div className="overflow-y-auto max-h-[calc(90vh-190px)] p-5 sm:p-6 space-y-4 bg-slate-50/60">
+          {/* Tarjeta de presentación del sector */}
+          <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1.5">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-bold font-mono uppercase text-slate-500">
+                {currentSector.badge}
+              </span>
+              <span className="text-[11px] font-mono text-amber-800 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-full font-semibold">
+                {currentSector.term}
+              </span>
+            </div>
+            <h4 className="text-base sm:text-lg font-bold text-slate-900 font-serif">
+              {currentSector.title}
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed font-normal">
+              {currentSector.description}
+            </p>
+          </div>
+
+          {/* Grid de 2 columnas: Organizaciones y Actividades */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Ámbitos de Inserción */}
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs space-y-2.5">
+              <h5 className="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-1.5">
+                <Building className="w-3.5 h-3.5 text-slate-500" />
+                <span>Ámbitos & Entornos</span>
+              </h5>
+              <ul className="space-y-2">
+                {currentSector.organizations.map((org, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                    <span className="leading-tight">{org}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Actividades del Practicante */}
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs space-y-2.5">
+              <h5 className="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Actividades Clave</span>
+              </h5>
+              <ul className="space-y-2">
+                {currentSector.activities.map((act, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="leading-tight">{act}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Respaldo de Asignatura Oficial */}
+          <div className="p-3.5 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 font-mono font-bold text-xs">
+                LID
+              </div>
+              <div>
+                <span className="font-semibold text-slate-900 block leading-tight">
+                  {currentSector.subjectName} ({currentSector.subjectCode})
+                </span>
+                <span className="text-[11px] text-slate-500 font-mono">
+                  Asignatura oficial curricular • 4.0 Créditos SEP
+                </span>
+              </div>
+            </div>
+            <span className="hidden sm:inline-block px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-mono text-[11px] font-medium">
+              Obligatoria
+            </span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="p-4 sm:p-5 bg-white border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-500 text-[11px]">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>Horas curriculares liberadas conforme a normativa de servicio SEP</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer"
+            >
+              Cerrar
+            </button>
+            {onOpenLeadModal && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenLeadModal();
+                }}
+                className="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition shadow-xs cursor-pointer"
+              >
+                Consultar Convenios
               </button>
             )}
           </div>
