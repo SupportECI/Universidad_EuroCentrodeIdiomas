@@ -15,7 +15,8 @@ import {
   CERTIFICATIONS_DATA,
   VINCULACION_DATA,
 } from "../../data/curriculumData";
-import { CertificatesModal, VinculacionModal } from "../common/Modals";
+import { CertificatesModal, VinculacionModal } from "../modals";
+import heroImg3 from "../../assets/3.jpeg";
 
 export default function LicenciaturaSection({
   onOpenLeadModal,
@@ -37,22 +38,26 @@ export default function LicenciaturaSection({
 
   return (
     <div id="licenciatura" className="w-full bg-slate-50 space-y-16 lg:space-y-20 pb-16 lg:pb-24">
-      {/* 7.1 Encabezado Principal Oficial - Expansive Panorama */}
+      {/* 7.1 Encabezado Principal Oficial - Expansive Panorama con Imagen 3 (Espacio libre a la izquierda) */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo fotográfico con estudiantes en cabinas de interpretación */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo fotográfico con imagen 3 (estudiantes a la derecha, espacio libre a la izquierda) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-end">
           <img
-            src="/images/hero-licenciatura.jpg"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            src={heroImg3}
+            alt="Estudiantes en aula de estudio e idiomas Euro Centro"
+            className="w-full h-full object-cover object-right sm:object-contain"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
+          {/* Scrim fotográfico: protege el texto a la izquierda y deja ver a los estudiantes a la derecha */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/75 to-[#070a26]/20 max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/50" />
           <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="space-y-6 max-w-4xl">
+          {/* Contenido alineado a la izquierda aprovechando el espacio libre */}
+          <div className="space-y-6 max-w-3xl text-left">
             {/* RVOE Eyebrow Stitch */}
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
@@ -70,7 +75,7 @@ export default function LicenciaturaSection({
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
               Inglés, francés e italiano para traducir, interpretar, enseñar y
-              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con laboratorios y validez oficial federal SEP.
+              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con aulas multimedia y validez oficial federal SEP.
             </p>
 
             {/* Datos clave / Badges Stitch */}

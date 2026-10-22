@@ -10,6 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
+import heroImg6 from "../../assets/6.jpeg";
 
 const GALLERY_PHOTOS = [
   {
@@ -110,24 +111,26 @@ export default function GaleriaSection({ onOpenLeadModal }) {
 
   return (
     <div className="space-y-16 lg:space-y-24">
-      {/* 1. Hero Institucional con estética de Plantel Bicentenario */}
+      {/* 1. Hero Institucional con estética de Plantel Bicentenario - Imagen 6 (Espacio libre a la derecha) */}
       <section className="relative overflow-hidden bg-[#070a26] text-white pt-24 pb-20 lg:pt-32 lg:pb-28">
-        {/* Fondo con imagen de campus y gradiente editorial */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo con imagen 6 (aulas y docente a la izquierda, libre a la derecha) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-vida-estudiantil.jpg"
+            src={heroImg6}
             alt="Galería y Campus Euro Centro de Estudios Superiores"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "18s" }}
+            className="w-full h-full object-cover object-left sm:object-left-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/85 to-[#070a26]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim calibrado: transparente a la izquierda para ver el aula y alumnos; degradado a la derecha para legibilidad */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#070a26]/75 to-[#070a26] max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-            <div className="lg:col-span-8 flex flex-col gap-5">
+            {/* Columna Derecha: Texto alineado en el lado con espacio libre */}
+            <div className="lg:col-start-6 lg:col-span-7 flex flex-col gap-5 text-left">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit border border-white/15">
                 <Camera className="w-3.5 h-3.5 text-[#e6c15c]" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
@@ -177,40 +180,6 @@ export default function GaleriaSection({ onOpenLeadModal }) {
                 </div>
               </div>
             </div>
-
-            {/* Tarjeta destacada lateral */}
-            <div className="lg:col-span-4 hidden lg:block">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 text-slate-200 space-y-4 shadow-2xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#c8963e]/20 border border-[#e6c15c]/40 flex items-center justify-center text-[#e6c15c]">
-                    <Building className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-white font-serif">
-                      Plantel Bicentenario
-                    </h3>
-                    <p className="text-[11px] text-slate-300">
-                      Sede oficial de Educación Superior
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-xs text-slate-300 leading-relaxed font-light">
-                  Aulas climatizadas, cabinas de idiomas y espacios de convivencia diseñados para la formación de licenciados en idiomas de alto perfil profesional.
-                </p>
-
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="text-slate-400">¿Quieres conocerlo?</span>
-                  <button
-                    onClick={onOpenLeadModal}
-                    className="text-[#e6c15c] hover:underline font-semibold inline-flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Agendar visita</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -237,24 +206,21 @@ export default function GaleriaSection({ onOpenLeadModal }) {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? "bg-[#070a26] text-white shadow-md shadow-[#070a26]/20 border border-[#070a26]"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80"
-                  }`}
+                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${isActive
+                    ? "bg-[#070a26] text-white shadow-md shadow-[#070a26]/20 border border-[#070a26]"
+                    : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80"
+                    }`}
                 >
                   <Icon
-                    className={`w-3.5 h-3.5 ${
-                      isActive ? "text-[#e6c15c]" : "text-slate-500"
-                    }`}
+                    className={`w-3.5 h-3.5 ${isActive ? "text-[#e6c15c]" : "text-slate-500"
+                      }`}
                   />
                   <span>{cat.label}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                      isActive
-                        ? "bg-white/20 text-[#e6c15c]"
-                        : "bg-slate-200/80 text-slate-600"
-                    }`}
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${isActive
+                      ? "bg-white/20 text-[#e6c15c]"
+                      : "bg-slate-200/80 text-slate-600"
+                      }`}
                   >
                     {cat.id === "todas"
                       ? GALLERY_PHOTOS.length

@@ -13,6 +13,7 @@ import {
   FileCheck2,
 } from "lucide-react";
 import { REQUIREMENTS_DATA, FAQ_DATA, INSTITUTION_INFO } from "../../data/curriculumData";
+import heroImg7 from "../../assets/7.jpeg";
 
 export default function AdmisionesSection({ onOpenLeadModal }) {
   const [openFaq, setOpenFaq] = useState(0);
@@ -49,7 +50,7 @@ export default function AdmisionesSection({ onOpenLeadModal }) {
     {
       step: "05",
       title: "Inducción e Inicio",
-      description: "Jornada de bienvenida institucional, acceso a laboratorios acústicos y arranque de clases en Plantel Bicentenario.",
+      description: "Jornada de bienvenida institucional, acceso a aulas multimedia y arranque de clases en Plantel Bicentenario.",
       icon: GraduationCap,
       badge: "Ciclo 2026-1",
     },
@@ -61,23 +62,25 @@ export default function AdmisionesSection({ onOpenLeadModal }) {
 
   return (
     <div id="admisiones" className="w-full bg-slate-50 space-y-24">
-      {/* 10.0 Hero de Admisiones & Convocatoria - Expansive Full-Bleed Atmosphere */}
+      {/* 10.0 Hero de Admisiones & Convocatoria - Expansive Full-Bleed Atmosphere con Imagen 7 (Espacio libre a la derecha) */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo fotográfico de alta visibilidad */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo fotográfico con imagen 7 (estudiantes en clase a la izquierda, libre a la derecha) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-admisiones.jpg"
-            alt="Aspirantes y Estudiantes Matriculados en Plantel Bicentenario"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            src={heroImg7}
+            alt="Aspirantes y Estudiantes en dinámica de aula Plantel Bicentenario"
+            className="w-full h-full object-cover object-left sm:object-left-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim fotográfico: transparente a la izquierda para ver a los estudiantes; degradado a la derecha para legibilidad */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#070a26]/75 to-[#070a26] max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="space-y-6 max-w-4xl">
+          {/* Contenido alineado a la derecha aprovechando el espacio libre */}
+          <div className="space-y-6 max-w-3xl ml-auto text-left">
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />

@@ -13,16 +13,16 @@ function WhatsAppIcon({ className = "w-6 h-6" }) {
   );
 }
 
-export default function FloatingControls({ onOpenLeadModal, onOpenPrivacy }) {
+export default function FloatingControls({ onOpenPrivacy }) {
   const [cookieConsentDismissed, setCookieConsentDismissed] = useState(false);
   const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
 
   const handleWhatsAppClick = () => {
     window.open(
       "https://wa.me/529616138049?text=" +
-        encodeURIComponent(
-          "Hola, me gustaría solicitar informes sobre la Licenciatura en Idiomas en el Plantel Bicentenario."
-        ),
+      encodeURIComponent(
+        "Hola, me gustaría solicitar informes sobre la Licenciatura en Idiomas en el Plantel Bicentenario."
+      ),
       "_blank",
       "noopener,noreferrer"
     );

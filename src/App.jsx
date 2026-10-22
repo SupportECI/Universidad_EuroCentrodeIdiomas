@@ -9,7 +9,7 @@ import {
   LegalModal,
   VideoModal,
   SubjectModal,
-} from "./components/common/Modals";
+} from "./components/modals";
 
 // Home Components
 import Hero from "./components/home/Hero";

@@ -1,0 +1,8 @@
+export { default as LeadModal } from "./LeadModal";
+export { default as PrivacyModal } from "./PrivacyModal";
+export { default as LegalModal } from "./LegalModal";
+export { default as VideoModal } from "./VideoModal";
+export { default as SubjectModal } from "./SubjectModal";
+export { default as FacultyModal } from "./FacultyModal";
+export { default as CertificatesModal } from "./CertificatesModal";
+export { default as VinculacionModal } from "./VinculacionModal";

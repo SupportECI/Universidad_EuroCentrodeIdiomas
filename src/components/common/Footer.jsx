@@ -51,7 +51,6 @@ export default function Footer({
   onNavigate,
   onOpenPrivacy,
   onOpenLegal,
-  onOpenLeadModal,
 }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
@@ -208,16 +207,7 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Instalaciones &amp; Cabinas de Idiomas</span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onNavigate("galeria")}
-                className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
-              >
-                <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Galería Fotográfica &amp; Comunidad</span>
+                <span>Instalaciones</span>
               </button>
             </li>
             <li>

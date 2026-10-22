@@ -40,7 +40,7 @@ export default function QuickFacts({ onNavigate }) {
   ];
 
   return (
-    <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 -mt-10 sm:-mt-14 w-full">
+    <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 -mt-8 sm:-mt-10 lg:-mt-12 w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {facts.map((item, idx) => {
           const Icon = item.icon;

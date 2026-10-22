@@ -6,13 +6,13 @@ import {
   GraduationCap,
   Plane,
   MonitorCheck,
-  Headphones,
   Library,
   Layers,
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
+import heroImg5 from "../../assets/5.jpeg";
 
 export default function VidaEstudiantilSection({ onOpenLeadModal }) {
   const facilities = [
@@ -24,15 +24,6 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
       spec: "Capacidad: 25 alumnos máx.",
       accent: "from-blue-500/20 to-blue-500/5",
       iconColor: "text-euro-blue",
-    },
-    {
-      name: "Laboratorios Fonéticos & Cabinas",
-      desc: "Cabinas individuales de interpretación simultánea y software acústico para corrección prosódica en inglés, francés e italiano.",
-      tag: "Tecnología Especializada",
-      icon: Headphones,
-      spec: "Equipamiento CAT & Audio Hi-Fi",
-      accent: "from-purple-500/20 to-purple-500/5",
-      iconColor: "text-purple-600",
     },
     {
       name: "Centro de Acervo & Biblioteca",
@@ -84,23 +75,25 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
 
   return (
     <div id="vida-estudiantil" className="w-full bg-slate-50 space-y-24">
-      {/* 9.0 Hero de Vida Estudiantil & Comunidad - Expansive Panorama */}
+      {/* 9.0 Hero de Vida Estudiantil & Comunidad - Expansive Panorama con Imagen 5 (Espacio libre a la izquierda) */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo fotográfico con estudiantes universitarios conviviendo en campus */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo fotográfico con imagen 5 (estudiantes y docente a la derecha, espacio libre a la izquierda) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-vida-estudiantil.jpg"
+            src={heroImg5}
             alt="Comunidad Universitaria en el Campus Plantel Bicentenario"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            className="w-full h-full object-cover object-right sm:object-right-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim fotográfico: protege el texto a la izquierda y deja ver la clase y convivencia a la derecha */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26] via-[#070a26]/75 to-transparent max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="space-y-6 max-w-4xl">
+          {/* Contenido alineado a la izquierda aprovechando el espacio libre */}
+          <div className="space-y-6 max-w-3xl text-left">
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
@@ -164,7 +157,7 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
                 }}
                 className="btn-tactile py-3.5 px-6 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Explorar Instalaciones & Laboratorios</span>
+                <span>Explorar Instalaciones & Aulas Multimedia</span>
               </button>
             </div>
           </div>
@@ -181,7 +174,7 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
             Instalaciones Diseñadas para la Inmersión Lingüística
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-            El Plantel Bicentenario en Tuxtla Gutiérrez cuenta con infraestructura creada específicamente para la práctica activa, cabinas de traducción y laboratorios acústicos.
+            El Plantel Bicentenario en Tuxtla Gutiérrez cuenta con infraestructura creada específicamente para la práctica activa.
           </p>
         </div>
 

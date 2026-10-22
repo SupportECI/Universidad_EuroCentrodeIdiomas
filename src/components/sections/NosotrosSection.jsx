@@ -17,7 +17,8 @@ import {
   BookOpen,
 } from "lucide-react";
 import { INSTITUTION_INFO, FACULTY_COLLEGES } from "../../data/curriculumData";
-import { FacultyModal } from "../common/Modals";
+import { FacultyModal } from "../modals";
+import heroImg2 from "../../assets/2.jpeg";
 
 export default function NosotrosSection({ onOpenLeadModal }) {
   const [selectedAcademyId, setSelectedAcademyId] = useState(null);
@@ -51,7 +52,7 @@ export default function NosotrosSection({ onOpenLeadModal }) {
   const institutionalValues = [
     {
       title: "Excelencia Académica",
-      desc: "Exigencia continua en cada clase, laboratorio y evaluación bajo estándares del Marco Común Europeo.",
+      desc: "Exigencia continua en cada clase, aula multimedia y evaluación bajo estándares del Marco Común Europeo.",
       icon: Award,
       accent: "from-amber-500/20 to-amber-500/5",
       iconColor: "text-amber-500",
@@ -79,7 +80,7 @@ export default function NosotrosSection({ onOpenLeadModal }) {
     },
     {
       title: "Innovación Metodológica",
-      desc: "Integración de laboratorios, herramientas de traducción y pedagogías activas.",
+      desc: "Integración de aulas multimedia, herramientas de traducción y pedagogías activas.",
       icon: Lightbulb,
       accent: "from-amber-500/20 to-amber-500/5",
       iconColor: "text-amber-500",
@@ -95,24 +96,26 @@ export default function NosotrosSection({ onOpenLeadModal }) {
 
   return (
     <div id="nosotros" className="w-full bg-slate-50 space-y-24 pb-16 lg:pb-24">
-      {/* 6.1 Hero de Identidad Institucional - Expansive Full-Bleed Panorama */}
+      {/* 6.1 Hero de Identidad Institucional - Expansive Full-Bleed Panorama con Imagen 2 (Espacio libre a la derecha) */}
       <section className="relative w-full overflow-hidden text-white min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo con imagen de campus y claustro docente */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo con imagen 2 (aulas y alumnos a la izquierda, libre a la derecha) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-nosotros.jpg"
+            src={heroImg2}
             alt="Claustro Académico y Vida en Campus Euro Centro"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            className="w-full h-full object-cover object-left sm:object-left-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim calibrado: transparente a la izquierda para ver el aula y estudiantes; degradado azul a la derecha para legibilidad del texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#070a26]/75 to-[#070a26] max-sm:bg-[#070a26]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-7 flex flex-col gap-5">
+            {/* Columna Derecha: Texto alineado en el lado con espacio libre */}
+            <div className="lg:col-start-6 lg:col-span-7 flex flex-col gap-5 text-left">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit border border-white/15">
                 <span className="w-2 h-2 rounded-full bg-[#e6c15c] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#e6c15c]">

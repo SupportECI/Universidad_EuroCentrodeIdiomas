@@ -12,6 +12,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { FORMATION_STAGES, INSTITUTION_INFO } from "../../data/curriculumData";
+import heroImg4 from "../../assets/4.jpeg";
 
 export default function ModeloEducativoSection({
   onOpenVideo,
@@ -39,13 +40,13 @@ export default function ModeloEducativoSection({
       title: "Práctica Profesional en Aula",
       description: "Traducción jurídica, subtitulaje audiovisual, interpretación consecutiva y didáctica de lenguas aplicadas en proyectos reales.",
       icon: Mic2,
-      badge: "Cabinas Acústicas",
+      badge: "Aulas Multimedia",
       accent: "from-purple-500/20 to-purple-500/5",
       iconColor: "text-purple-600",
     },
     {
       title: "Tecnología para Lenguas (CAT)",
-      description: "Manejo intensivo de software de traducción asistida por computadora (SDL Trados/Smartcat), laboratorios acústicos y plataformas LMS.",
+      description: "Manejo intensivo de software de traducción asistida por computadora (SDL Trados/Smartcat), aulas multimedia y plataformas LMS.",
       icon: Laptop,
       badge: "Entornos Digitales",
       accent: "from-emerald-500/20 to-emerald-500/5",
@@ -84,7 +85,7 @@ export default function ModeloEducativoSection({
     },
     {
       step: "03",
-      title: "Laboratorios Acústicos & Fonética",
+      title: "Aulas Multimedia & Fonética",
       desc: "Práctica asistida para neutralizar interferencias fonéticas, perfeccionar la prosodia y dominar la entonación exacta.",
       highlight: "Precisión Acústica",
     },
@@ -92,23 +93,25 @@ export default function ModeloEducativoSection({
 
   return (
     <div id="modelo-educativo" className="w-full bg-slate-50 space-y-24">
-      {/* 8.0 Hero de Modelo Educativo Trilingüe - Expansive Panorama */}
+      {/* 8.0 Hero de Modelo Educativo Trilingüe - Expansive Panorama con Imagen 4 (Espacio libre a la derecha) */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo fotográfico con laboratorio lingüístico moderno */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo fotográfico con imagen 4 (aula y docente a la izquierda, espacio libre a la derecha) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-modelo-educativo.jpg"
-            alt="Laboratorio de Lingüística Aplicada y Análisis Fonético"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            src={heroImg4}
+            alt="Aulas y Cátedra de Lingüística Aplicada Euro Centro"
+            className="w-full h-full object-cover object-left sm:object-left-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim fotográfico: transparente a la izquierda para visibilidad del aula; degradado a la derecha para legibilidad del texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#070a26]/75 to-[#070a26] max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="space-y-6 max-w-4xl">
+          {/* Contenido alineado a la derecha aprovechando el espacio libre */}
+          <div className="space-y-6 max-w-3xl ml-auto text-left">
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
@@ -124,7 +127,7 @@ export default function ModeloEducativoSection({
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
-              Nuestro modelo sustituye la memorización pasiva por la práctica profesional intensiva: laboratorios acústicos, cabinas de interpretación simultánea, traducción asistida por computadora (CAT) y certificaciones internacionales integradas a la retícula curricular.
+              Nuestro modelo sustituye la memorización pasiva por la práctica profesional intensiva: aulas multimedia y certificaciones internacionales integradas a la retícula curricular.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2 text-xs">
@@ -211,7 +214,7 @@ export default function ModeloEducativoSection({
               </div>
             </div>
             <p className="text-[11px] text-slate-500 text-center mt-3 font-medium">
-              Conoce el enfoque pedagógico y las cabinas de traducción en Plantel Bicentenario
+              Conoce el enfoque pedagógico y las aulas de traducción en Plantel Bicentenario
             </p>
           </div>
 
@@ -231,7 +234,7 @@ export default function ModeloEducativoSection({
                 Nuestro modelo pedagógico parte de una verdad confirmada en más de dos décadas formando hablantes competentes: <strong className="text-euro-dark font-semibold">una lengua se aprende cuando se utiliza como herramienta de interacción real.</strong>
               </p>
               <p>
-                Por ello, cada cuatrimestre articula tres dimensiones interconectadas: la inmersión conversacional, el rigor de la teoría lingüística descriptiva y la práctica profesional en traducción, interpretación en cabina y docencia de vanguardia.
+                Por ello, cada cuatrimestre articula tres dimensiones interconectadas: la inmersión conversacional, el rigor de la teoría lingüística descriptiva y la práctica profesional en traducción y docencia de vanguardia.
               </p>
               <p>
                 El alumno es el protagonista. Guiado por docentes especializados, desarrolla la seguridad psicológica y la fluidez cognitiva necesarias para negociar, traducir textos técnicos y expresarse con elegancia en tres lenguas.
@@ -262,7 +265,7 @@ export default function ModeloEducativoSection({
               Metodología Inmersiva
             </span>
             <h3 className="text-2xl font-bold font-display text-white">
-              Aprender Haciendo: De la Teoría a la Cabina de Traducción
+              Aprender Haciendo: De la Teoría a la Práctica
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
               Las sesiones en aula priorizan la producción oral, el análisis de corpus textuales y la simulación de conferencias multilingües. No esperarás al egreso para traducir o interpretar: lo haces desde los primeros semestres formativos con acompañamiento de especialistas.

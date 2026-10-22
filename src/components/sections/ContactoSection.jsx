@@ -12,6 +12,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
+import heroImg8 from "../../assets/8.jpeg";
 
 export default function ContactoSection({ onOpenPrivacy }) {
   const [formData, setFormData] = useState({
@@ -71,23 +72,25 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
   };
   return (
     <div id="contacto" className="w-full bg-slate-50 space-y-24 pb-16 lg:pb-24">
-      {/* 11.0 Hero de Contacto & Plantel Bicentenario - Expansive Panorama */}
+      {/* 11.0 Hero de Contacto & Plantel Bicentenario - Expansive Panorama con Imagen 8 (Espacio libre a la izquierda) */}
       <section className="relative w-full text-white overflow-hidden min-h-[75vh] flex items-center bg-[#070a26] py-20 lg:py-28">
-        {/* Fondo fotográfico con fachada y pórtico de campus */}
-        <div className="absolute inset-0 z-0">
+        {/* Fondo fotográfico con imagen 8 (docente y pintarrón a la derecha, espacio libre a la izquierda) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/images/hero-contacto.jpg"
-            alt="Pórtico y Acceso a Instalaciones del Plantel Bicentenario"
-            className="w-full h-full object-cover object-center scale-105 motion-safe:animate-pulse-glow"
-            style={{ animationDuration: "16s" }}
+            src={heroImg8}
+            alt="Cátedra y Atención Directa en Plantel Bicentenario"
+            className="w-full h-full object-cover object-right sm:object-right-top"
+            loading="eager"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26]/95 via-[#070a26]/80 to-[#070a26]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26] via-transparent to-[#070a26]/60" />
-          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#c8963e]/15 blur-3xl pointer-events-none" />
+          {/* Scrim fotográfico: protege el texto a la izquierda y deja ver la cátedra a la derecha */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070a26] via-[#070a26]/75 to-transparent max-sm:bg-[#070a26]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a26]/50 via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="space-y-6 max-w-4xl">
+          {/* Contenido alineado a la izquierda aprovechando el espacio libre */}
+          <div className="space-y-6 max-w-3xl text-left">
             <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
               <span>{INSTITUTION_INFO.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />

@@ -231,38 +231,6 @@ export const CAREER_PATHS = [
   },
 ];
 
-export const MODEL_PILLARS = [
-  {
-    title: "Aprendizaje Comunicativo",
-    description: "El idioma se usa desde el primer día en situaciones reales de diálogo y debate.",
-    icon: "forum",
-  },
-  {
-    title: "Tres Idiomas, Un Perfil",
-    description: "Inglés y francés a lo largo de toda la carrera, sumando italiano a partir del 4° cuatrimestre.",
-    icon: "public",
-  },
-  {
-    title: "Práctica desde el Aula",
-    description: "Traducción, interpretación y didáctica aplicadas en proyectos de inmersión.",
-    icon: "record_voice_over",
-  },
-  {
-    title: "Tecnología para Lenguas",
-    description: "Herramientas de software, laboratorios y plataformas LMS de última generación.",
-    icon: "devices",
-  },
-  {
-    title: "Formación Humanista",
-    description: "Bases de ética profesional, filosofía y comprensión de la interculturalidad.",
-    icon: "handshake",
-  },
-  {
-    title: "Certificación Internacional",
-    description: "El noveno cuatrimestre incluye la materia formal para avalar tu nivel internacional.",
-    icon: "verified",
-  },
-];
 
 export const FORMATION_STAGES = [
   {
@@ -287,38 +255,6 @@ export const FORMATION_STAGES = [
   },
 ];
 
-export const ADMISSION_STEPS = [
-  {
-    step: "01",
-    title: "Preinscríbete en línea",
-    description: "Llena el formulario institucional de prospectos y un asesor académico te contactará en menos de 24 horas.",
-    icon: "how_to_reg",
-  },
-  {
-    step: "02",
-    title: "Presenta tu examen diagnóstico",
-    description: "Conocemos tu nivel de partida. No es indispensable tener conocimientos previos de un segundo idioma.",
-    icon: "assignment",
-  },
-  {
-    step: "03",
-    title: "Entrega tu documentación",
-    description: "Cotejo de antecedentes escolares y acta oficial ante el área de Control Escolar del plantel.",
-    icon: "folder_shared",
-  },
-  {
-    step: "04",
-    title: "Realiza tu pago de inscripción",
-    description: "Confirmación de lugar mediante opciones bancarias seguras y asignación de matrícula institucional.",
-    icon: "payments",
-  },
-  {
-    step: "05",
-    title: "Inicia tus clases",
-    description: "Bienvenida oficial al ciclo cuatrimestral y acceso inmediato a laboratorios del Plantel Bicentenario.",
-    icon: "school",
-  },
-];
 
 export const REQUIREMENTS_DATA = [
   "Certificado de bachillerato legalizado o constancia de estudios en trámite con promedio.",
@@ -368,38 +304,6 @@ export const FAQ_DATA = [
   },
 ];
 
-export const INSTITUTIONAL_VALUES = [
-  {
-    title: "Excelencia",
-    desc: "Buscamos el más alto nivel en cada clase, cada idioma y cada egresado.",
-    icon: "workspace_premium",
-  },
-  {
-    title: "Respeto Intercultural",
-    desc: "Valoramos la diversidad de lenguas, culturas y formas de pensar en una comunidad global.",
-    icon: "public",
-  },
-  {
-    title: "Ética Profesional",
-    desc: "Actuamos con honestidad, confidencialidad y rigor deontológico en la traducción y la docencia.",
-    icon: "gavel",
-  },
-  {
-    title: "Compromiso",
-    desc: "Acompañamos a cada estudiante desde su ingreso hasta su plena inserción en el campo laboral.",
-    icon: "handshake",
-  },
-  {
-    title: "Innovación",
-    desc: "Integramos tecnología acústica, herramientas digitales y nuevas metodologías activas.",
-    icon: "lightbulb",
-  },
-  {
-    title: "Espíritu Emprendedor",
-    desc: "Impulsamos a nuestros estudiantes a crear sus propias empresas, consultorías y oportunidades.",
-    icon: "rocket_launch",
-  },
-];
 
 export const NEWS_DATA = [
   {
@@ -424,7 +328,7 @@ export const NEWS_DATA = [
     id: 3,
     tag: "Instalaciones",
     category: "Plantel",
-    title: "Equipamiento de los nuevos Laboratorios",
+    title: "Equipamiento de las nuevas Aulas Multimedia",
     date: "Plantel Bicentenario",
     excerpt: "Software interactivo listos para las prácticas de la comunidad estudiantil.",
     isRecent: true,
@@ -579,7 +483,7 @@ export const FACULTY_COLLEGES = [
         title: "Maîtrise en Traductologie et Lettres Modernes (Université de Lille)",
         role: "Catedrática de Fonética Correctiva y Traducción Literaria",
         photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
-        bio: "Lingüista francesa especializada en corrección fonética acústica para estudiantes hispanohablantes. Ha participado en comités de traducción editorial en Europa y desarrolla prácticas de doblaje y transcripción en laboratorio.",
+        bio: "Lingüista francesa especializada en corrección fonética acústica para estudiantes hispanohablantes. Ha participado en comités de traducción editorial en Europa y desarrolla prácticas de doblaje y transcripción en aulas multimedia.",
         certifications: [
           "DALF C2 Niveau Maîtrise",
           "Spécialiste Méthode Verbo-Tonale de Phonétique",
@@ -667,7 +571,7 @@ export const FACULTY_COLLEGES = [
         ],
         subjects: [
           "Italiano I a III",
-          "Laboratorio de Expresión y Pronunciación Italiana",
+          "Aula Multimedia de Expresión y Pronunciación Italiana",
         ],
         experience: "8 años de experiencia",
         origin: "Italia",
@@ -718,7 +622,7 @@ export const FACULTY_COLLEGES = [
         title: "Doctora en Didáctica de las Lenguas y Pedagogía Universitaria (Universidad Complutense de Madrid)",
         role: "Catedrática de Didáctica de Idiomas y Tecnologías Educativas",
         photo: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80",
-        bio: "Consultora curricular internacional en pedagogía activa y diseño de programas bilingües. Pionera en la implementación de laboratorios digitales y software de asistencia a la traducción y docencia en el sureste mexicano.",
+        bio: "Consultora curricular internacional en pedagogía activa y diseño de programas bilingües. Pionera en la implementación de aulas multimedia y software de asistencia a la traducción y docencia en el sureste mexicano.",
         certifications: [
           "Doctorado en Didáctica (UCM Madrid)",
           "Especialista en EdTech & CALL",
@@ -779,7 +683,7 @@ export const CERTIFICATIONS_DATA = [
           "Redacción de reportes analíticos, ensayos críticos y propuestas ejecutivas",
           "Uso del idioma con fines profesionales, de investigación y sociales",
         ],
-        euroPreparation: "Laboratorio de fonética acústica, debate universitario en inglés avanzado y simulacros oficiales en la materia LID-905.",
+        euroPreparation: "Aula multimedia de fonética acústica, debate universitario en inglés avanzado y simulacros oficiales en la materia LID-905.",
         featured: true,
       },
       {
@@ -813,7 +717,7 @@ export const CERTIFICATIONS_DATA = [
           "Pronunciación clara y síntesis de conferencias universitarias",
           "Escritura académica integrada",
         ],
-        euroPreparation: "Laboratorios multimedia con plataformas de evaluación computarizada idénticas al entorno oficial de examen.",
+        euroPreparation: "Aulas multimedia con plataformas de evaluación computarizada idénticas al entorno oficial de examen.",
         featured: false,
       },
     ],
@@ -953,7 +857,7 @@ export const CERTIFICATIONS_DATA = [
           "Habilitación legal para firma pericial, docencia oficial y cargos públicos",
           "Apostilla de La Haya para revalidación en más de 120 países",
         ],
-        euroPreparation: "Campus universitario formal, infraestructura física autorizada, laboratorios especializados y plantilla docente validada por la SEP.",
+        euroPreparation: "Campus universitario formal, infraestructura física autorizada, aulas multimedia y plantilla docente validada por la SEP.",
         featured: true,
       },
       {
