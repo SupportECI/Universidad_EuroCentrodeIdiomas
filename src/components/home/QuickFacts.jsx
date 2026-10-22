@@ -18,7 +18,7 @@ export default function QuickFacts({ onNavigate }) {
     {
       stat: "3",
       badge: "Dominio",
-      title: "Idiomas C1/C2 Simultáneos",
+      title: "Titulacion simultánea en tres idiomas",
       desc: "Egresas dominando Inglés, Francés e Italiano con certificaciones internacionales oficiales.",
       icon: Globe,
     },

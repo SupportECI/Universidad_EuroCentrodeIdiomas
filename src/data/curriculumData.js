@@ -365,7 +365,7 @@ export const FACULTY_COLLEGES = [
     shortName: "Inglés",
     flag: "🇬🇧",
     badge: "Proficiency & DELTA / Cambridge",
-    desc: "Catedráticos nativos y lingüistas con certificaciones C2 Proficiency, metodología comunicativa inmersiva y preparación para exámenes internacionales.",
+    desc: "Catedráticos nativos y lingüistas con certificaciones, metodología comunicativa inmersiva y preparación para exámenes internacionales.",
     subjects: "Inglés I a IX • Comprensión Auditiva I y II • Certificación Internacional",
     color: {
       primary: "from-blue-600 to-indigo-700",
@@ -384,7 +384,6 @@ export const FACULTY_COLLEGES = [
         bio: "Hablante nativa originaria del Reino Unido con más de 14 años de trayectoria docente universitaria en Europa y México. Especialista en fonología avanzada, desarrollo de fluidez ejecutiva y preparación de candidatos para Cambridge C2 Proficiency.",
         certifications: [
           "Cambridge DELTA / CELTA",
-          "C2 Proficiency (CPE) Grade A",
           "Examinadora Oficial Cambridge",
         ],
         subjects: [
@@ -404,7 +403,6 @@ export const FACULTY_COLLEGES = [
         photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
         bio: "Perito traductor con acreditación ante tribunales federales. Cuenta con más de una década impartiendo cátedra en traducción directa e inversa y estrategias de interpretación bilateral en foros internacionales de negocios y turismo.",
         certifications: [
-          "C2 Proficiency Cambridge",
           "Acreditación Perito Traductor Oficial",
           "TKT Master Modules",
         ],
