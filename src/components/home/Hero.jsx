@@ -27,11 +27,9 @@ export default function Hero({ onOpenLeadModal, onNavigate }) {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8">
         {/* Contenido alineado a la izquierda aprovechando el espacio libre */}
         <div className="space-y-6 max-w-3xl text-left">
-          {/* Eyebrow Institucional Oficial (idéntico al de las demás secciones) */}
+          {/* Eyebrow Institucional Oficial */}
           <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#e6c15c]">
-            <span>{INSTITUTION_INFO.name}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
-            <span>Plantel Bicentenario</span>
+            <span>Licenciatura en Idiomas</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
             <span className="bg-[#c8963e]/20 text-white px-2.5 py-0.5 rounded font-mono border border-[#e6c15c]/30">
               RVOE SEP {INSTITUTION_INFO.rvoeNumber}
@@ -40,16 +38,27 @@ export default function Hero({ onOpenLeadModal, onNavigate }) {
 
           {/* Titular Principal Editorial con escala y tipografía uniforme */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
-            Domina el mundo en{" "}
-            <span className="italic text-[#e6c15c]">tres lenguas vivas</span> con
-            rigor profesional.
+            Estudia idiomas.{" "}
+            <span className="italic text-[#e6c15c]">Hazlos tu profesión.</span>
           </h1>
 
           {/* Subtítulo sintético y directo */}
           <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
-            Formación universitaria trilingüe simultánea en{" "}
-            <strong className="text-white font-medium">Inglés, Francés e Italiano</strong>. Titulación oficial y cédula federal SEP en Plantel Bicentenario Tuxtla Gutiérrez.
+            Licenciatura en Idiomas con inglés, francés e italiano, validez oficial SEP y el respaldo de más de 25 años de Euro Centro en la enseñanza de idiomas.
           </p>
+
+          {/* Chips informativos */}
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-medium border border-white/15 backdrop-blur-sm">
+              3 idiomas
+            </span>
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-medium border border-white/15 backdrop-blur-sm">
+              Inglés nivel C1
+            </span>
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white/90 text-xs font-medium border border-white/15 backdrop-blur-sm">
+              3 años
+            </span>
+          </div>
 
           {/* CTAs Principales con microinteracciones táctiles */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -57,16 +66,16 @@ export default function Hero({ onOpenLeadModal, onNavigate }) {
               onClick={() => onOpenLeadModal ? onOpenLeadModal() : onNavigate?.("admisiones")}
               className="btn-tactile inline-flex items-center gap-2.5 bg-[#c8963e] hover:bg-[#e6c15c] text-[#070a26] font-extrabold text-xs uppercase tracking-wider py-4 px-7 rounded-xl shadow-xl transition-all cursor-pointer"
             >
-              <span>Iniciar Preinscripción</span>
+              <span>Solicita información</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
-              onClick={() => onNavigate?.("licenciatura", "plan-estudios")}
+              onClick={() => onNavigate?.("licenciatura")}
               className="btn-tactile inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider py-4 px-7 rounded-xl border border-white/20 backdrop-blur-md transition-all cursor-pointer"
             >
               <BookOpen className="w-4 h-4 text-[#e6c15c]" />
-              <span>Plan de Estudios</span>
+              <span>Conoce la licenciatura</span>
             </button>
           </div>
         </div>

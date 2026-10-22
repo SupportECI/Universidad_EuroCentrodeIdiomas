@@ -12,7 +12,7 @@ export const INSTITUTION_INFO = {
   hoursHI: "1,746 horas independientes",
   totalSubjects: 58,
   rvoeNumber: "20263560",
-  rvoeDate: "11 de agosto de 2027",
+  rvoeDate: "11 de agosto de 2026",
   rvoeFullText:
     "Licenciatura en Idiomas con Reconocimiento de Validez Oficial de Estudios otorgado por la Secretaría de Educación Pública, Acuerdo No. 20263560, de fecha 11 de agosto de 2026. Modalidad escolarizada.",
   trustPhrase:
@@ -194,14 +194,14 @@ export const CURRICULUM_DATA = [
 
 export const CAREER_PATHS = [
   {
-    title: "Traductor e Intérprete Oficial",
+    title: "Traductor e intérprete",
     description: "Traducción de documentos, contenidos y textos especializados; interpretación en eventos, conferencias y negociaciones.",
     icon: "translate",
     tag: "Corporativo & Foros",
   },
   {
-    title: "Perito Traductor Autorizado",
-    description: "Formación de base para gestionar la acreditación pericial ante tribunales y dependencias con plena fe jurídica.",
+    title: "Perito traductor",
+    description: "Prepárate para buscar la acreditación como perito y realizar traducciones con validez legal.",
     icon: "gavel",
     tag: "Validez Legal",
   },
@@ -212,20 +212,20 @@ export const CAREER_PATHS = [
     tag: "Liderazgo Pedagógico",
   },
   {
-    title: "Emprendimiento Lingüístico",
-    description: "Crea tu propia escuela, agencia de traducción boutique o plataforma de consultoría en servicios bilingües.",
+    title: "Emprendimiento",
+    description: "Crea tu propia escuela, agencia de traducción o servicio de clases en línea.",
     icon: "business_center",
     tag: "Negocios Propios",
   },
   {
-    title: "Trabajo Remoto Internacional",
-    description: "Colabora desde cualquier lugar con empresas globales en atención multilingüe, subtitulaje y localización, generando ingresos en divisas.",
+    title: "Trabajo remoto",
+    description: "Trabaja desde casa para empresas de otros países, con ingresos en dólares o euros.",
     icon: "laptop_mac",
     tag: "Global & Freelance",
   },
   {
-    title: "Turismo, Comercio & Diplomacia",
-    description: "Hotelería de alta gama, consulados, agencias aduanales y organismos multilaterales que demandan perfiles trilingües.",
+    title: "Turismo y comercio internacional",
+    description: "Hoteles, empresas, consulados y organismos que buscan profesionales que hablen varios idiomas.",
     icon: "flight_takeoff",
     tag: "Relaciones Exteriores",
   },
@@ -308,29 +308,12 @@ export const FAQ_DATA = [
 export const NEWS_DATA = [
   {
     id: 1,
-    tag: "Convocatoria",
-    category: "Admisiones",
-    title: "Apertura oficial de la Convocatoria de Admisión 2027",
-    date: "Ciclo 2027-1",
-    excerpt: "Inicia el registro para aspirantes a la primera generación de la Licenciatura en Idiomas en el Plantel Bicentenario.",
-    isRecent: true,
-  },
-  {
-    id: 2,
     tag: "Institucional",
-    category: "Acreditaciones",
-    title: "Obtención formal del RVOE Federal SEP No. 20263560",
-    date: "Agosto 2027",
-    excerpt: "La Secretaría de Educación Pública avala plenamente la Licenciatura en Idiomas.",
-    isRecent: true,
-  },
-  {
-    id: 3,
-    tag: "Instalaciones",
-    category: "Plantel",
-    title: "Equipamiento de las nuevas Aulas Multimedia",
-    date: "Plantel Bicentenario",
-    excerpt: "Software interactivo listos para las prácticas de la comunidad estudiantil.",
+    category: "Validez Oficial",
+    title: "Euro Centro de Estudios Superiores obtiene el RVOE federal de la SEP",
+    date: "11 de agosto de 2026",
+    excerpt: "La Licenciatura en Idiomas cuenta con Reconocimiento de Validez Oficial de Estudios, Acuerdo No. 20263560.",
+    image: "/images/hero-licenciatura.jpg",
     isRecent: true,
   },
 ];

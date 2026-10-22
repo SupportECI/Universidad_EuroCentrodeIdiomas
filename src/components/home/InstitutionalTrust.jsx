@@ -1,12 +1,11 @@
-import { ShieldCheck, History, ArrowRight, Award, GraduationCap, Building2 } from "lucide-react";
+import { ShieldCheck, History, ArrowRight, Award, Building2 } from "lucide-react";
 import { INSTITUTION_INFO } from "../../data/curriculumData";
 
 export default function InstitutionalTrust({ onNavigate }) {
   const stats = [
     { value: "+25", unit: "Años", label: "Trayectoria en idiomas", icon: History },
-    { value: "+3,000", unit: "Egresados", label: "Comunidad formada", icon: GraduationCap },
     { value: "RVOE SEP", unit: "Federal", label: `Acuerdo ${INSTITUTION_INFO.rvoeNumber}`, icon: ShieldCheck },
-    { value: "100%", unit: "Presencial", label: "Plantel Bicentenario", icon: Building2 },
+    { value: "Presencial", unit: "", label: "Plantel Bicentenario", icon: Building2 },
   ];
 
   return (
@@ -37,7 +36,7 @@ export default function InstitutionalTrust({ onNavigate }) {
       <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
         <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 text-euro-gold text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md border border-white/15 shadow-xs font-mono">
           <Award className="w-4 h-4 text-euro-gold" />
-          <span>Prestigio y Trayectoria en la Enseñanza de Idiomas</span>
+          <span>Trayectoria en la enseñanza de idiomas</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight max-w-4xl font-display">
@@ -49,15 +48,11 @@ export default function InstitutionalTrust({ onNavigate }) {
         </h2>
 
         <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl font-light mb-12">
-          {INSTITUTION_INFO.name} nace del respaldo y trayectoria de Euro Centro,
-          que por más de 25 años ha transformado la forma de aprender lenguas en
-          el sureste mexicano. Hoy llevamos toda esa experiencia acumulada al nivel
-          superior con rigor universitario, docentes certificados e instalaciones de
-          primer nivel en el Plantel Bicentenario.
+          Euro Centro de Estudios Superiores nace del respaldo de Euro Centro, que por más de 25 años ha transformado la forma de aprender idiomas en el sureste mexicano. Hoy llevamos esa experiencia al nivel profesional, en el Plantel Bicentenario.
         </p>
 
-        {/* 4 Estadísticas clave Bento Tiles */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 w-full max-w-4xl mb-12">
+        {/* 3 Estadísticas clave Bento Tiles */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 w-full max-w-4xl mb-12">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (

@@ -10,30 +10,30 @@ export default function QuickFacts({ onNavigate }) {
   const facts = [
     {
       stat: "+25",
-      badge: "Tradición",
-      title: "Años de Liderazgo",
-      desc: "Primer plantel especializado en formación lingüística avanzada y humanista en Tuxtla Gutiérrez.",
+      badge: "Experiencia",
+      title: "Años en idiomas",
+      desc: "La experiencia de Euro Centro en la enseñanza de idiomas, ahora en una licenciatura.",
       icon: Award,
     },
     {
       stat: "3",
-      badge: "Dominio",
-      title: "Titulacion simultánea en tres idiomas",
-      desc: "Egresas dominando Inglés, Francés e Italiano con certificaciones internacionales oficiales.",
+      badge: "Idiomas",
+      title: "Idiomas",
+      desc: "Inglés hasta nivel C1, francés B2 e italiano B1. Inglés y francés durante toda la carrera, e italiano desde el cuarto cuatrimestre.",
       icon: Globe,
     },
     {
       stat: "9",
-      badge: "Estructura",
-      title: "Cuatrimestres Lectivos",
-      desc: "3 años académicos continuos y ágiles que aceleran tu inserción en el mercado global.",
+      badge: "Duración",
+      title: "Cuatrimestres",
+      desc: "Terminas tu licenciatura en 3 años.",
       icon: Clock,
     },
     {
-      stat: "100%",
-      badge: "Certeza",
-      title: "Validez Oficial SEP",
-      desc: "RVOE Federal 20263560 con cédula profesional para ejercer en México y el extranjero.",
+      stat: "SEP",
+      badge: "Validez",
+      title: "Validez oficial",
+      desc: "RVOE federal No. 20263560. Al titularte obtienes tu cédula profesional.",
       icon: ShieldCheck,
       highlight: true,
     },
@@ -79,7 +79,7 @@ export default function QuickFacts({ onNavigate }) {
           onClick={() => onNavigate("licenciatura")}
           className="btn-tactile inline-flex items-center gap-2.5 text-xs font-bold text-[#0b1d3a] hover:text-[#1211ab] uppercase tracking-wider transition-all group cursor-pointer bg-white px-5 py-2.5 rounded-full border border-slate-200 shadow-sm hover:shadow-md"
         >
-          <span>Explorar el programa completo de la Licenciatura en Idiomas</span>
+          <span>Conoce la Licenciatura en Idiomas</span>
           <ArrowRight className="w-4 h-4 text-[#c8963e] group-hover:translate-x-1 transition-transform" />
         </button>
       </div>

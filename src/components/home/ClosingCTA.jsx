@@ -18,7 +18,7 @@ export default function ClosingCTA({ onOpenLeadModal, onNavigate }) {
           <div className="space-y-3 max-w-2xl text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-euro-gold text-xs font-bold uppercase tracking-wider backdrop-blur-md border border-white/15 font-mono">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Inscripciones Abiertas • Plantel Bicentenario</span>
+              <span>Plantel Bicentenario · Tuxtla Gutiérrez</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight font-display">
               Tu carrera en idiomas{" "}
@@ -27,8 +27,7 @@ export default function ClosingCTA({ onOpenLeadModal, onNavigate }) {
               </span>
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
-              Solicita informes, agenda tu examen diagnóstico sin costo y conoce los
-              apoyos y becas académicas vigentes para el ciclo 2027‑1.
+              Solicita informes y conoce el proceso de admisión a la Licenciatura en Idiomas.
             </p>
           </div>
 

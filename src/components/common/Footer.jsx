@@ -91,17 +91,16 @@ export default function Footer({
           </div>
 
           <p className="text-xs text-slate-300 leading-relaxed font-light">
-            {INSTITUTION_INFO.trustPhrase}. Formando licenciados trilingües con
-            rigor académico, acreditaciones internacionales y alta competitividad profesional.
+            Una nueva institución con el respaldo de más de 25 años transformando la enseñanza de idiomas.
           </p>
 
           <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
             <div className="flex items-center gap-2 text-xs font-bold text-white">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Incorporación Oficial SEP</span>
+              <span>Validez oficial SEP</span>
             </div>
             <p className="text-[11px] text-slate-300 leading-relaxed">
-              Acuerdo RVOE No. {INSTITUTION_INFO.rvoeNumber}. Título y Cédula Profesional Federal con validez nacional e internacional.
+              RVOE No. {INSTITUTION_INFO.rvoeNumber}, de fecha 11 de agosto de 2026.
             </p>
           </div>
 
@@ -144,14 +143,11 @@ export default function Footer({
           </div>
         </div>
 
-        {/* Columna 2: Navegación Académica */}
+        {/* Columna 2: Oferta académica */}
         <div className="space-y-4">
           <div className="space-y-1">
-            <span className="text-[10px] font-bold text-[#e6c15c] uppercase tracking-widest block font-mono">
-              Programas &amp; Campus
-            </span>
             <h4 className="text-sm font-bold text-white font-serif">
-              Oferta Universitaria
+              Oferta académica
             </h4>
           </div>
 
@@ -162,7 +158,7 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Licenciatura en Idiomas (9 Cuatrimestres)</span>
+                <span>Licenciatura en Idiomas</span>
               </button>
             </li>
             <li>
@@ -171,16 +167,7 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Plan Curricular &amp; 58 Asignaturas</span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onNavigate("licenciatura", "certificaciones")}
-                className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
-              >
-                <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Catálogo de Certificaciones Oficiales</span>
+                <span>Plan de estudios</span>
               </button>
             </li>
             <li>
@@ -189,7 +176,7 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Modelo Educativo por Competencias</span>
+                <span>Modelo Educativo</span>
               </button>
             </li>
             <li>
@@ -198,7 +185,7 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Programa de Becas y Apoyos Económicos</span>
+                <span>Becas y apoyos</span>
               </button>
             </li>
             <li>
@@ -216,17 +203,17 @@ export default function Footer({
                 className="group flex items-center gap-2 text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
                 <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#e6c15c] group-hover:translate-x-1 transition-all" />
-                <span>Historia, Respaldo &amp; Claustro Docente</span>
+                <span>Nosotros</span>
               </button>
             </li>
           </ul>
         </div>
 
-        {/* Columna 3: Ubicación y Contacto Directo */}
+        {/* Columna 3: Sede · Plantel Bicentenario */}
         <div className="space-y-4">
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-[#e6c15c] uppercase tracking-widest block font-mono">
-              Sede Universitaria
+              Sede
             </span>
             <h4 className="text-sm font-bold text-white font-serif">
               Plantel Bicentenario
@@ -306,14 +293,11 @@ export default function Footer({
           </div>
         </div>
 
-        {/* Columna 4: Certeza Jurídica & Enlace Oficial */}
+        {/* Columna 4: Legal */}
         <div className="space-y-4">
           <div className="space-y-1">
-            <span className="text-[10px] font-bold text-[#e6c15c] uppercase tracking-widest block font-mono">
-              Certeza Jurídica
-            </span>
             <h4 className="text-sm font-bold text-white font-serif">
-              Transparencia Institucional
+              Legal
             </h4>
           </div>
 
@@ -323,7 +307,7 @@ export default function Footer({
                 onClick={onOpenPrivacy}
                 className="group flex items-center justify-between text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
-                <span>Aviso de Privacidad Integral</span>
+                <span>Aviso de Privacidad</span>
                 <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-[#e6c15c]" />
               </button>
             </li>
@@ -332,26 +316,8 @@ export default function Footer({
                 onClick={onOpenLegal}
                 className="group flex items-center justify-between text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
               >
-                <span>Aviso Legal y Condiciones de Uso</span>
+                <span>Aviso Legal</span>
                 <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-[#e6c15c]" />
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onNavigate("nosotros")}
-                className="group flex items-center justify-between text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
-              >
-                <span>Respaldo Euro Centro (25 Años)</span>
-                <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-[#e6c15c]" />
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onNavigate("admisiones")}
-                className="group flex items-center justify-between text-slate-300 hover:text-[#e6c15c] transition-colors text-left w-full cursor-pointer py-1"
-              >
-                <span>Requisitos de Admisión SEP</span>
-                <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-[#e6c15c]" />
               </button>
             </li>
           </ul>

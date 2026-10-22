@@ -1,5 +1,4 @@
 import {
-  TrendingUp,
   Languages,
   Gavel,
   School,
@@ -40,25 +39,25 @@ export default function CareerOpportunities({ onNavigate }) {
                 {/* Texto sobre la imagen */}
                 <div className="absolute bottom-6 left-6 right-6 text-white space-y-1.5">
                   <span className="text-[10.5px] font-bold text-euro-gold uppercase tracking-widest block font-mono">
-                    Proyección Profesional Internacional
+                    Proyección Profesional
                   </span>
                   <h3 className="font-extrabold text-xl leading-snug font-display">
-                    Liderazgo trilingüe en corporativos, embajadas y foros mundiales
+                    Tu carrera en idiomas, en México y en línea con el mundo
                   </h3>
                 </div>
               </div>
             </div>
 
             {/* Badge Flotante con Glassmorphism */}
-            <div className="absolute -top-5 -right-3 sm:-right-6 bg-white/95 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-slate-200/80 max-w-[220px] transform hover:scale-105 transition-all duration-300 diffusion-shadow-lg">
+            <div className="absolute -top-5 -right-3 sm:-right-6 bg-white/95 backdrop-blur-xl p-4 sm:p-5 rounded-3xl shadow-2xl border border-slate-200/80 max-w-[220px] transform hover:scale-105 transition-all duration-300 diffusion-shadow-lg">
               <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-8 h-8 rounded-xl bg-euro-gold/20 flex items-center justify-center text-euro-gold-dark">
-                  <TrendingUp className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-xl bg-amber-100 flex items-center justify-center text-[#7e5700]">
+                  <Languages className="w-5 h-5" />
                 </div>
-                <span className="font-black text-3xl text-euro-dark font-display tracking-tight">+92%</span>
+                <span className="font-black text-2xl sm:text-3xl text-slate-900 font-display tracking-tight">3 idiomas</span>
               </div>
               <p className="text-[11px] text-slate-600 leading-snug font-medium">
-                de inserción profesional en el primer año para perfiles trilingües certificados.
+                Validez oficial SEP y formación profesional universitaria.
               </p>
             </div>
           </div>
@@ -67,7 +66,7 @@ export default function CareerOpportunities({ onNavigate }) {
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div>
               <span className="text-euro-gold-dark font-extrabold text-xs uppercase tracking-widest block mb-2 font-mono">
-                Campo Laboral Global
+                Campo laboral
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-euro-dark tracking-tight mb-4 font-display leading-tight">
                 Un idioma abre puertas.{" "}
@@ -76,10 +75,7 @@ export default function CareerOpportunities({ onNavigate }) {
                 </span>
               </h2>
               <p className="text-sm text-slate-600 leading-relaxed font-light">
-                Los egresados del Euro Centro de Estudios Superiores acceden a
-                posiciones de alto perfil tanto en México como en el extranjero gracias
-                a un perfil trilingüe altamente demandado. No solo vas a dar clases; vas
-                a elegir tu camino.
+                Con tres idiomas y formación profesional, tus opciones van mucho más allá del aula. No solo vas a dar clases: vas a elegir tu camino.
               </p>
             </div>
 
@@ -112,7 +108,7 @@ export default function CareerOpportunities({ onNavigate }) {
                 onClick={() => onNavigate("licenciatura", "campo-laboral")}
                 className="btn-tactile inline-flex items-center gap-2.5 text-xs font-bold text-euro-dark hover:text-euro-blue uppercase tracking-wider transition-colors group cursor-pointer bg-slate-100 hover:bg-slate-200/70 px-5 py-3 rounded-full border border-slate-200/80"
               >
-                <span>Conoce el campo laboral detallado</span>
+                <span>Conoce el campo laboral</span>
                 <ArrowRight className="w-4 h-4 text-euro-gold group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

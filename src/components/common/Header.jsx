@@ -142,7 +142,7 @@ export default function Header({ onOpenLeadModal }) {
               onClick={onOpenLeadModal}
               className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-[#070a26] hover:bg-[#11184a] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer border border-[#070a26] active:scale-[0.98]"
             >
-              Solicitar admisión
+              Solicita información
             </button>
 
             {/* Disparador móvil accesible */}
@@ -202,7 +202,7 @@ export default function Header({ onOpenLeadModal }) {
                 }}
                 className="w-full py-2.5 bg-[#070a26] hover:bg-[#11184a] text-white font-semibold text-xs tracking-wide rounded-md flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
-                Solicitar admisión
+                Solicita información
               </button>
               <p className="text-center text-[10px] text-slate-400">
                 RVOE SEP {INSTITUTION_INFO.rvoeNumber} · Plantel Bicentenario

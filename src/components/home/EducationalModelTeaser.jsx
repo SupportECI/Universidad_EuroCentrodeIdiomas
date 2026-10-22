@@ -2,9 +2,9 @@ import { Play, CheckCircle2, ArrowRight, Video, Sparkles } from "lucide-react";
 
 export default function EducationalModelTeaser({ onNavigate, onOpenVideo }) {
   const points = [
-    { text: "Docentes certificados y profesores invitados nativos de cada lengua.", tag: "Claustro" },
+    { text: "Docentes: profesores especializados en cada idioma y área.", tag: "Claustro" },
     { text: "Práctica real de traducción e interpretación.", tag: "Práctica" },
-    { text: "Acompañamiento tutorial continuo en grupos de cupo limitado.", tag: "Atención" },
+    { text: "Acompañamiento: seguimiento cercano durante toda tu carrera.", tag: "Atención" },
   ];
 
   return (
@@ -37,19 +37,13 @@ export default function EducationalModelTeaser({ onNavigate, onOpenVideo }) {
                   </div>
                 </div>
 
-                {/* Badges de Video */}
-                <div className="absolute bottom-4 right-4 bg-euro-dark/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-md font-mono border border-white/10">
-                  2:45 min • Full HD
-                </div>
+                {/* Badge de Video */}
                 <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-euro-dark text-[11px] font-extrabold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-2 border border-slate-100">
                   <Video className="w-3.5 h-3.5 text-euro-gold" />
-                  <span>Tour de Instalaciones • Plantel Bicentenario</span>
+                  <span>Conoce nuestro modelo educativo</span>
                 </div>
               </div>
             </div>
-            <p className="text-xs text-slate-500 text-center mt-3 font-medium">
-              Haz clic para reproducir el recorrido virtual del Plantel Bicentenario
-            </p>
           </div>
 
           {/* Columna Derecha: Contenido y Enfoque */}
@@ -57,19 +51,16 @@ export default function EducationalModelTeaser({ onNavigate, onOpenVideo }) {
             <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-euro-gold/20 text-euro-dark text-xs font-bold uppercase tracking-wider border border-euro-gold/30 mb-3 font-mono">
                 <Sparkles className="w-3.5 h-3.5 text-euro-gold-dark" />
-                <span>Modelo Educativo Activo</span>
+                <span>Modelo educativo</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-euro-dark tracking-tight mb-4 font-display leading-tight">
-                Inmersión práctica y aprendizaje activo{" "}
+                Aprendes el idioma usándolo,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-euro-blue via-euro-royal to-euro-blue">
                   desde el primer día
                 </span>
               </h2>
               <p className="text-sm text-slate-600 leading-relaxed font-light">
-                <strong>Aprendes el idioma usándolo.</strong> Nuestro modelo
-                combina práctica real, tecnología acústica y formación humanista desde el primer
-                cuatrimestre. Superamos la memorización pasiva para priorizar la
-                comunicación fluida, la traducción aplicada y el debate crítico.
+                Nuestro modelo combina práctica real, tecnología y formación humanista desde el primer cuatrimestre. En clase conversas, traduces, presentas y practicas lo que vas a hacer en tu vida profesional, y en el laboratorio de idiomas trabajas tu pronunciación y comprensión auditiva.
               </p>
             </div>
 
@@ -99,7 +90,7 @@ export default function EducationalModelTeaser({ onNavigate, onOpenVideo }) {
                 onClick={() => onNavigate("modelo-educativo")}
                 className="btn-tactile inline-flex items-center gap-2.5 bg-euro-dark hover:bg-euro-navy text-white font-bold text-xs uppercase tracking-wider py-4 px-7 rounded-2xl shadow-xl transition-all cursor-pointer border border-white/10"
               >
-                <span>Descubre el Modelo Educativo Completo</span>
+                <span>Conoce el modelo educativo</span>
                 <ArrowRight className="w-4 h-4 text-euro-gold" />
               </button>
             </div>
