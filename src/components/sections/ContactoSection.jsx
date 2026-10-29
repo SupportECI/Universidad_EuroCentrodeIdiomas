@@ -122,7 +122,7 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
                   HORARIO ATENCIÓN
                 </span>
                 <span className="font-bold text-[#e6c15c] text-base font-serif">Lunes a Sábado</span>
-                <span className="text-[11px] text-slate-300 block">8:00 AM – 7:00 PM</span>
+                <span className="text-[11px] text-slate-300 block">9:00 AM – 8:00 PM (Sáb. 2:00 PM)</span>
               </div>
               <div className="bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md hover:bg-white/15 transition-colors">
                 <span className="block text-slate-300 text-[10.5px] uppercase font-bold tracking-wider">
@@ -353,6 +353,7 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
                         <span>Enviar Solicitud a Admisiones</span>
                       </>
                     )}
+
                   </button>
                   <p className="text-[11px] text-center text-slate-400 mt-2 flex items-center justify-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
@@ -443,7 +444,7 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
                     <strong className="block text-slate-800 font-display">
                       Horarios de Oficina:
                     </strong>
-                    <span>Lunes a Viernes 8:00 a 18:00 hrs • Sábados 8:00 a 14:00 hrs</span>
+                    <span>Lunes a Viernes 9:00 a 20:00 hrs • Sábados 9:00 a 14:00 hrs</span>
                   </div>
                 </div>
               </div>
@@ -453,7 +454,7 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block font-display">
                   Canales Oficiales
                 </span>
-                <div className="flex items-center gap-2.5">
+                <div className="flex flex-wrap items-center gap-2.5">
                   <a
                     href={INSTITUTION_INFO.facebookUrl}
                     target="_blank"
@@ -470,6 +471,24 @@ Agradezco su atención para orientarme sobre el plan curricular, costos y convoc
                     className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-pink-50 hover:text-pink-600 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5"
                   >
                     <span>Instagram</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <a
+                    href={INSTITUTION_INFO.tiktokUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold transition flex items-center gap-1.5"
+                  >
+                    <span>TikTok</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <a
+                    href={INSTITUTION_INFO.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5"
+                  >
+                    <span>YouTube</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>

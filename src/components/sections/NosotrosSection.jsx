@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Target,
   Compass,
@@ -16,12 +15,11 @@ import {
   ChevronRight,
   BookOpen,
 } from "lucide-react";
-import { INSTITUTION_INFO, FACULTY_COLLEGES } from "../../data/curriculumData";
-import { FacultyModal } from "../modals";
+import { INSTITUTION_INFO } from "../../data/curriculumData";
 import heroImg2 from "../../assets/2.jpeg";
+import ClaustroCarousel from "../common/ClaustroCarousel";
 
 export default function NosotrosSection({ onOpenLeadModal }) {
-  const [selectedAcademyId, setSelectedAcademyId] = useState(null);
   const timeline = [
     {
       period: "Más de 25 años de trayectoria",
@@ -380,83 +378,8 @@ export default function NosotrosSection({ onOpenLeadModal }) {
         </div>
       </section>
 
-      {/* 6.6 Planta Docente & Claustro Académico */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="bg-euro-dark text-white rounded-3xl p-8 sm:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-euro-blue/20 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 space-y-10">
-            <div className="max-w-3xl space-y-3">
-              <span className="text-xs font-bold text-euro-gold uppercase tracking-widest font-display block">
-                Cuerpo Académico Especializado
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-white">
-                Claustro Académico
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
-                Nuestro cuerpo docente está integrado por hablantes nativos, traductores en activo, peritos intérpretes y maestros en lingüística aplicada con acreditaciones oficiales de reconocimiento mundial. Haz clic en cada academia para consultar la plantilla docente.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {FACULTY_COLLEGES.map((col, idx) => (
-                <div
-                  key={col.id}
-                  onClick={() => setSelectedAcademyId(col.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setSelectedAcademyId(col.id);
-                    }
-                  }}
-                  className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-euro-gold/50 hover:bg-white/[0.08] transition-all flex flex-col justify-between space-y-4 cursor-pointer group text-left shadow-sm hover:shadow-xl hover:-translate-y-1"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-euro-gold/15 text-euro-gold flex items-center justify-center font-bold group-hover:scale-105 group-hover:bg-euro-gold group-hover:text-euro-dark transition-all">
-                        {idx === 0 && <BookOpen className="w-5 h-5" />}
-                        {idx === 1 && <Award className="w-5 h-5" />}
-                        {idx === 2 && <Globe2 className="w-5 h-5" />}
-                        {idx === 3 && <GraduationCap className="w-5 h-5" />}
-                      </div>
-                      <span className="text-[10px] text-euro-gold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5 font-medium">
-                        Ver docentes <ChevronRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] font-mono text-euro-gold uppercase tracking-wider block">
-                        {col.badge || col.credential}
-                      </span>
-                      <h4 className="font-bold text-sm text-white font-display mt-0.5 group-hover:text-euro-gold transition-colors">
-                        {col.area}
-                      </h4>
-                    </div>
-
-                    <p className="text-xs text-slate-300 leading-relaxed font-light">
-                      {col.desc}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-white/10 text-[10px] text-slate-400 font-mono flex items-center justify-between">
-                    <span>{col.subjects}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Modal de Claustro Docente por Academia */}
-      <FacultyModal
-        isOpen={Boolean(selectedAcademyId)}
-        academyId={selectedAcademyId}
-        onClose={() => setSelectedAcademyId(null)}
-        onOpenLeadModal={onOpenLeadModal}
-      />
+      {/* 6.6 Planta Docente & Claustro Académico - Carrusel Modular */}
+      <ClaustroCarousel />
     </div>
   );
 }

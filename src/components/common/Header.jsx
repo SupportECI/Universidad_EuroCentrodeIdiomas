@@ -43,6 +43,7 @@ export default function Header({ onOpenLeadModal }) {
     { id: "nosotros", label: "Nosotros", path: "/nosotros" },
     { id: "licenciatura", label: "Licenciatura", path: "/licenciatura" },
     { id: "modelo-educativo", label: "Modelo", path: "/modelo-educativo" },
+    { id: "investigaciones", label: "Investigación", mobileLabel: "Centro de Investigaciones", path: "/centro-investigaciones" },
     { id: "vida-estudiantil", label: "Campus", path: "/vida-estudiantil" },
     { id: "galeria", label: "Galería", path: "/galeria" },
     { id: "admisiones", label: "Admisiones", path: "/admisiones" },
@@ -122,14 +123,14 @@ export default function Header({ onOpenLeadModal }) {
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.path)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer relative ${isActive
+                  className={`px-2 xl:px-3 py-1.5 text-[11px] xl:text-xs font-medium rounded-md transition-colors cursor-pointer relative whitespace-nowrap ${isActive
                     ? "text-[#070a26] font-semibold bg-slate-100"
                     : "text-slate-600 hover:text-[#070a26] hover:bg-slate-50"
                     }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#c8963e] rounded-full" />
+                    <span className="absolute bottom-0 left-2 right-2 xl:left-3 xl:right-3 h-[2px] bg-[#c8963e] rounded-full" />
                   )}
                 </button>
               );
@@ -184,7 +185,7 @@ export default function Header({ onOpenLeadModal }) {
                     : "text-slate-700 hover:bg-slate-50 hover:text-[#070a26]"
                     }`}
                 >
-                  <span>{link.label}</span>
+                  <span>{link.mobileLabel || link.label}</span>
                   {isActive ? (
                     <span className="w-1.5 h-1.5 rounded-full bg-[#c8963e]" />
                   ) : (

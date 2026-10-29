@@ -123,7 +123,7 @@ export default function ModeloEducativoSection({
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.08] font-serif">
-              Aprender idiomas con <span className="italic text-[#e6c15c]">propósito, rigor</span> y tecnología.
+              Aprender idiomas con <span className="italic text-[#e6c15c]">propósito y </span> tecnología.
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
@@ -234,7 +234,7 @@ export default function ModeloEducativoSection({
                 Nuestro modelo pedagógico parte de una verdad confirmada en más de dos décadas formando hablantes competentes: <strong className="text-euro-dark font-semibold">una lengua se aprende cuando se utiliza como herramienta de interacción real.</strong>
               </p>
               <p>
-                Por ello, cada cuatrimestre articula tres dimensiones interconectadas: la inmersión conversacional, el rigor de la teoría lingüística descriptiva y la práctica profesional en traducción y docencia de vanguardia.
+                Por ello, cada cuatrimestre articula tres dimensiones interconectadas: la inmersión conversacional y la práctica profesional en traducción y docencia de vanguardia.
               </p>
               <p>
                 El alumno es el protagonista. Guiado por docentes especializados, desarrolla la seguridad psicológica y la fluidez cognitiva necesarias para negociar, traducir textos técnicos y expresarse con elegancia en tres lenguas.

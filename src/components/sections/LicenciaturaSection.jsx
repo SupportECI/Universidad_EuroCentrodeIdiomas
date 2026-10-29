@@ -75,7 +75,7 @@ export default function LicenciaturaSection({
 
             <p className="text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-3xl">
               Inglés, francés e italiano para traducir, interpretar, enseñar y
-              emprender con rigor metodológico y proyección mundial. Formación trilingüe estructurada con aulas multimedia y validez oficial federal SEP.
+              emprender y proyección mundial. Formación trilingüe estructurada con aulas multimedia y validez oficial federal SEP.
             </p>
 
             {/* Datos clave / Badges Stitch */}
@@ -319,7 +319,7 @@ export default function LicenciaturaSection({
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
               Los idiomas son una de las competencias más valoradas y mejor remuneradas en el mercado
-              contemporáneo. Con tres idiomas y rigor universitario, tus opciones son ilimitadas:
+              contemporáneo. Con tres idiomas, tus opciones son ilimitadas:
             </p>
           </div>
 
@@ -364,7 +364,9 @@ export default function LicenciaturaSection({
         </div>
       </section>
 
-      {/* 7.8 Certificaciones y Validez Oficial */}
+      {/* =========================================================================
+          7.8 Certificaciones y Validez Oficial SEP (SECCIÓN COMENTADA TEMPORALMENTE)
+          =========================================================================
       <section id="certificaciones" className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-md border border-slate-200/80 space-y-6">
           <div className="space-y-2">
@@ -387,7 +389,6 @@ export default function LicenciaturaSection({
             cuatrimestre, asegurando que cada egresado concluya sus estudios con un nivel formalmente respaldado ante instancias mundiales.
           </p>
 
-          {/* Tarjetas Interactivas de Certificaciones Internacionales y SEP */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-3">
             {CERTIFICATIONS_DATA.map((cat) => (
               <div
@@ -428,7 +429,6 @@ export default function LicenciaturaSection({
                     </p>
                   </div>
 
-                  {/* Muestra de certificaciones */}
                   <div className="space-y-1 pt-1 border-t border-slate-200/60">
                     <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold block">
                       Incluye acreditaciones:
@@ -455,6 +455,7 @@ export default function LicenciaturaSection({
           </div>
         </div>
       </section>
+      */}
 
       {/* 7.9 Vinculación y Convenios */}
       <section id="vinculacion" className="max-w-7xl mx-auto px-4 sm:px-8">

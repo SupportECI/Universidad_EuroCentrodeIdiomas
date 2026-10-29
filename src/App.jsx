@@ -9,6 +9,7 @@ import {
   LegalModal,
   VideoModal,
   SubjectModal,
+  NewsModal,
 } from "./components/modals";
 
 // Home Components
@@ -29,6 +30,7 @@ import VidaEstudiantilSection from "./components/sections/VidaEstudiantilSection
 import AdmisionesSection from "./components/sections/AdmisionesSection";
 import ContactoSection from "./components/sections/ContactoSection";
 import GaleriaSection from "./components/sections/GaleriaSection";
+import CentroInvestigacionesSection from "./components/sections/CentroInvestigacionesSection";
 
 import "./App.css";
 
@@ -41,6 +43,7 @@ export default function App() {
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState(null);
+  const [selectedNews, setSelectedNews] = useState(null);
 
   // Scroll to top on every route change (unless hash exists)
   useEffect(() => {
@@ -59,6 +62,8 @@ export default function App() {
       galeria: "/galeria",
       admisiones: "/admisiones",
       contacto: "/contacto",
+      "centro-investigaciones": "/centro-investigaciones",
+      investigaciones: "/centro-investigaciones",
     };
 
     const targetPath =
@@ -106,6 +111,7 @@ export default function App() {
                 <NewsAndAnnouncements
                   onNavigate={handleNavigate}
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
+                  onSelectNews={(news) => setSelectedNews(news)}
                 />
                 <ClosingCTA
                   onOpenLeadModal={() => setIsLeadModalOpen(true)}
@@ -202,6 +208,24 @@ export default function App() {
             }
           />
 
+          {/* Ruta: /centro-investigaciones */}
+          <Route
+            path="/centro-investigaciones"
+            element={
+              <div className="animate-fade-in pt-14 pb-20 lg:pb-32">
+                <CentroInvestigacionesSection
+                  onOpenLeadModal={() => setIsLeadModalOpen(true)}
+                />
+              </div>
+            }
+          />
+
+          {/* Alias: /investigaciones */}
+          <Route
+            path="/investigaciones"
+            element={<Navigate to="/centro-investigaciones" replace />}
+          />
+
           {/* Redirección para cualquier ruta que no coincida */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
@@ -251,6 +275,17 @@ export default function App() {
         isOpen={Boolean(selectedSubject)}
         cuatrimestreNumber={selectedSubject?.cuatrimestreNumber}
         onClose={() => setSelectedSubject(null)}
+      />
+
+      <NewsModal
+        news={selectedNews}
+        isOpen={Boolean(selectedNews)}
+        onClose={() => setSelectedNews(null)}
+        onSelectNews={(news) => setSelectedNews(news)}
+        onOpenLeadModal={() => {
+          setSelectedNews(null);
+          setIsLeadModalOpen(true);
+        }}
       />
     </div>
   );

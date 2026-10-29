@@ -6,3 +6,5 @@ export { default as SubjectModal } from "./SubjectModal";
 export { default as FacultyModal } from "./FacultyModal";
 export { default as CertificatesModal } from "./CertificatesModal";
 export { default as VinculacionModal } from "./VinculacionModal";
+export { default as NewsModal } from "./NewsModal";
+export { NOTICIAS_DATA } from "../../data/newsData";

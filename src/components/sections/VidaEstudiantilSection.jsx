@@ -237,7 +237,7 @@ export default function VidaEstudiantilSection({ onOpenLeadModal }) {
               </div>
               <div>
                 <strong className="block text-euro-dark">Atención Presencial:</strong>
-                <span className="text-slate-600">Lunes a Viernes de 8:00 a 18:00 hrs</span>
+                <span className="text-slate-600">Lunes a Viernes de 9:00 a 20:00 hrs • Sábados de 9:00 a 14:00 hrs</span>
               </div>
             </div>
 
