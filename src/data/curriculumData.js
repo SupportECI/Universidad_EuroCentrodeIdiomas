@@ -211,7 +211,7 @@ export const CAREER_PATHS = [
     title: "Docencia y Dirección Educativa",
     description: "Imparte clases de idiomas en todos los niveles y prepárate para coordinar academias y dirigir departamentos escolares.",
     icon: "school",
-    tag: "Liderazgo Pedagógico",
+    tag: "Formación Docente",
   },
   {
     title: "Emprendimiento",
@@ -510,7 +510,7 @@ export const FACULTY_COLLEGES = [
         title: "Master en Français Langue Étrangère (FLE) - Université Sorbonne Nouvelle Paris 3",
         role: "Coordinador de la Academia de Francés • Catedrático Titular",
         photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-        bio: "Originario de Lyon, Francia. Con más de 15 años de liderazgo pedagógico en la red de Alianzas Francesas y programas universitarios en Latinoamérica. Examinador oficial habilitado por France Éducation International para diplomaturas DALF C1/C2.",
+        bio: "Originario de Lyon, Francia. Con más de 15 años de experiencia en la red de Alianzas Francesas y programas universitarios en Latinoamérica. Examinador oficial habilitado por France Éducation International para diplomaturas DALF C1/C2.",
         certifications: [
           "Habilitation Examinateur-Correcteur DALF C1/C2",
           "Master 2 Recherche FLE Sorbonne Nouvelle",

@@ -75,7 +75,7 @@ const GALLERY_PHOTOS = [
     location: "Áreas de Convivencia • Plantel Bicentenario",
     date: "Actividades Estudiantiles",
     description:
-      "Alumnos y docentes en jornadas formativas y actividades grupales diseñadas para estimular el liderazgo, la oratoria y la expresión lingüística.",
+      "Alumnos y docentes en jornadas formativas y actividades grupales diseñadas para estimular  la oratoria y la expresión lingüística.",
     highlight: "Proyectos en equipo que fortalecen lazos humanos y competencias profesionales.",
   },
   {
